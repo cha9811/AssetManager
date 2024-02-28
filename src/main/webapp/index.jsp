@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-안녕하세용
+자산관리
+<a href="${pageContext.request.contextPath}/assetlist">Asset Main Page</a>
+<!-- <a href="assetlist">Asset Main Page2</a> -->
 </body>
 </html>
