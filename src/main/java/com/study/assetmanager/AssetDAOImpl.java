@@ -34,7 +34,12 @@ public class AssetDAOImpl implements AssetDAO{
 	}
 	
 	@Override
-	public List<AssetVO> getSoftDeleteAssetList() throws Exception {
+	public int updateAssetAll(List<AssetVO> vo) throws Exception {
+		return AssetSST.update("ASSET_MAPPER.ASSET_INFO_UPDATE", vo);
+	}
+	
+	@Override
+	public List<AssetVO> getSoftDeletedAssetList() throws Exception {
 		return AssetSST.selectList("ASSET_MAPPER.GET_ASSET_LIST_BY_SOFT_DELETE");
 	}
 
