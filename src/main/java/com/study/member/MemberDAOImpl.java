@@ -25,7 +25,7 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public int memberFindPW(String memberEmail, String memberID) {
-		Map<String, Object> params = new HashMap<>();
+		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("memberEmail", memberEmail);
 		params.put("memberID", memberID);
 		return memberSST.selectOne("MEMBER.GET_MEMBER_INFO_BY_EMAIL_AND_MEMBER_ID", params);
