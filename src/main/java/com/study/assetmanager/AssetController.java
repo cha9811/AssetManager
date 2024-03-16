@@ -1,17 +1,18 @@
 package com.study.assetmanager;
 
 import java.text.DateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import javax.servlet.http.HttpServletRequest;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +22,8 @@ public class AssetController {
 
 	@Autowired
 	AssetService assetService;
+
+	private static final Logger logger = LoggerFactory.getLogger(AssetController.class);
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -42,25 +45,27 @@ public class AssetController {
 
 	@RequestMapping("/assetlist")
 	public String assetMainPage(Model model) throws Exception {
-		System.out.println("나실행");
 		List<AssetVO> allAssets = assetService.AssetList();
 		model.addAttribute("allAssets", allAssets);
-		return "/asset/assetList"; // 실제 경로는 "WEB-INF/views/asset/assetmain.jsp"
+		return "/asset/assetList";
 	}
 
-	@RequestMapping("/assetUpdate")
-//	public String assetUpdate(HttpServletRequest request ,@ModelAttribute AssetVO assetVO) throws Exception {
-		public ResponseEntity<?> assetUpdate(@RequestBody List<AssetVO> assets) {
-		for (AssetVO asset : assets) {
-		    if ((Integer)asset.getAsset_id() == null) {
-		    	assetService.
-		    }
-		    // 추가적인 데이터 검증 로직...
+	@PostMapping("/assetUpdate")
+	public ResponseEntity<?> assetUpdate(@RequestBody List<AssetVO> assets) throws Exception {
+		try {
+			for (AssetVO asset : assets) {
+				if (asset.getAsset_id() > 0) {
+					assetService.AssetUpdate(asset);
+				} else {
+					assetService.AssetInsert(asset);
+				}
+			}
+			logger.info("Assets updated successfully");
+			return ResponseEntity.ok().body(Collections.singletonMap("message", "Assets updated successfully"));
+		} catch (Exception e) {
+			logger.error("Error updating assets: {}", e.getMessage());
+			return ResponseEntity.badRequest().body("Error updating assets:");
 		}
-		return ResponseEntity.ok().build();
-//		assetService.AssetUpdateAll(assetVO);
-		
-//		return "/asset/assetList";
 	}
 
 	@RequestMapping("/deletedassetlist")
@@ -69,5 +74,13 @@ public class AssetController {
 		model.addAttribute("allAssets", allAssets);
 		return "/asset/assetDeleteList";
 	}
+	
+	@RequestMapping("/assetDetail")
+	public String assetDetailPage(Model model) throws Exception {
+//		List<AssetVO> allAssets = assetService.DeletedAssetList();
+//		model.addAttribute("allAssets", allAssets);
+		return "/asset/assetDetail";
+	}
+	
 }
 //메모장 pom.xml 3.1.1에서 5.0.1로 바꿨음

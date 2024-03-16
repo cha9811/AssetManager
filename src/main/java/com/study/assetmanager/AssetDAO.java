@@ -13,5 +13,5 @@ public interface AssetDAO {
 		public int softDeleteAssetRollBack(int i) throws Exception;
 		public int softDeleteAsset(int i) throws Exception;
 		public int hardDeleteAsset(int i) throws Exception;
-		public int updateAssetAll(List<AssetVO> vo) throws Exception;
+//		public int updateAssetAll(List<AssetVO> vo) throws Exception;
 }

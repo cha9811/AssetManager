@@ -1,105 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="../header.jsp"%>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>리스트</title>
-</head>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/asset/AssetStyle.css">
-
-<body>
-
-	<form>
-		<button id="submitFormButton" type="submit">적용하기</button>
-		<button type="button" onclick="addRow()">행 추가</button>
-		<table class="board-table">
-			<thead>
-				<tr>
-					<th>삭제</th>
-					<th>카테고리</th>
-					<th>대분류</th>
-					<th>중분류</th>
-					<th>소분류</th>
-					<th>자산명</th>
-					<th>자산번호</th>
-					<th>맥주소</th>
-					<th>자산번호</th>
-					<th>사용위치</th>
-					<th>사용부서</th>
-					<th>사용자</th>
-					<th>LDAP</th>
-					<th>자산가격</th>
-					<th>구매일자</th>
-					<th>불출일자</th>
-					<th>반환일자</th>
-					<th>주석</th>
-				</tr>
-			</thead>
-			<c:forEach items="${allAssets}" var="vo">
-				<thead>
-				<tbody>
-					<tr class="clickable-row"
-						data-href="<c:url value='surveydetail?id=${vo.asset_id}'/>">
-						<td style="text-align: center; vertical-align: middle;">
-							<!-- 						<input type="hidden" name="asset_deleted" value="1"> -->
-							<input type='checkbox' name='asset_deleted' value="0"
-							onclick="this.form.asset_deleted.value=this.checked?0:1;" /> <input
-							type="hidden" name="asset_id" value="${vo.asset_id}">
-						</td>
-						<td><input class="input-size" name="asset_category"
-							value="${vo.asset_category}"></input></td>
-						<td><input class="input-size" name="asset_major_category"
-							value="${vo.asset_major_category}"></input></td>
-						<td><input class="input-size" name="asset_middle_category"
-							value="${vo.asset_middle_category}"></input></td>
-						<td><input class="input-size" name="asset_sub_category"
-							value="${vo.asset_sub_category}"></input></td>
-						<td><input class="input-size" name="asset_name"
-							value="${vo.asset_name}"></input></td>
-						<td><input class="input-size" name="serial_number"
-							value="${vo.serial_number}"></input></td>
-						<td><input class="input-size" name="asset_mac_address"
-							value="${vo.asset_mac_address}"></input></td>
-						<td><input class="input-size" name="asset_number"
-							value="${vo.asset_number}"></input></td>
-						<td><input class="input-size" name="asset_local"
-							value="${vo.asset_local}"></input></td>
-						<td><input class="input-size" name="asset_use_department"
-							value="${vo.asset_use_department}"></input></td>
-						<td><input class="input-size" name="asset_use_member_name"
-							value="${vo.asset_use_member_name}"></input></td>
-						<td><input class="input-size" name="asset_LDAP"
-							value="${vo.asset_LDAP}"></input></td>
-						<td><input class="input-size" name="asset_price"
-							value="${vo.asset_price}"></input></td>
-						<td><input class="input-size" name="asset_acquisition_date"
-							value="${vo.asset_acquisition_date}"></input></td>
-						<td><input class="input-size" name="asset_disbursement_date"
-							value="${vo.asset_disbursement_date}"></input></td>
-						<td><input class="input-size" name="asset_return_date"
-							value="${vo.asset_return_date}"></input></td>
-						<td><input class="input-size" name="asset_description"
-							value="${vo.asset_description}"></input></td>
-					</tr>
-				</tbody>
-			</c:forEach>
-			<tbody id="newTable">
-
-			</tbody>
-
-		</table>
-	</form>
-
-
-</body>
-<%-- <script src="${pageContext.request.contextPath}/resources/JS/JsonTest.js"> --%>
-<script>
-	function addRow() {
+function addRow() {
 		for (let i = 0; i < 10; i++) {
 			var tbody = document.getElementById("newTable");
 			var newRow = tbody.insertRow();
@@ -189,7 +88,7 @@
 	
 	function submitAssets() {
 	    var assets = []; // JSON 객체를 저장할 배열 생성
-	   
+	    // 모든 행 순회 (기존 자산 + 새로 추가된 자산)
 	    document.querySelectorAll(".board-table tbody tr").forEach(function(row) {
 	        console.log(document);
 	    	var asset = {
@@ -211,30 +110,23 @@
 	            asset_disbursement_date: row.querySelector("input[name='asset_disbursement_date']").value,
 	            asset_return_date: row.querySelector("input[name='asset_return_date']").value,
 	            asset_description: row.querySelector("input[name='asset_description']").value,
-	            asset_deleted: !row.querySelector("input[name='asset_deleted']").checked
+	            asset_deleted: row.querySelector("input[name='asset_deleted']").checked
+
 	    	};
 	        assets.push(asset);
 	        console.log(assets)
 	    });
-		
+
 	    // AJAX 요청으로 서버에 데이터 제출
-	    fetch('/assetmanager/assetUpdate', {
+	    fetch('http://localhost:8989/assetmanager/assetUpdate', {
 	        method: 'POST',
 	        headers: {
 	            'Content-Type': 'application/json',
 	        },
 	        body: JSON.stringify(assets), // 배열을 JSON 문자열로 변환
-			
+
 	    })
 	    .then(response => response.json())
-	    .then(data => {
-    console.log('Success:', data);
-    window.location.href = '/assetmanager/assetlist';
-})
+	    .then(data => console.log('Success:', data))
 	    .catch((error) => console.error('Error:', error));
-	    redirect: '/assetmanager/assetlist'
 	}  
-</script>
-
-
-</html>

@@ -3,12 +3,13 @@
 <mapper namespace="MEMBER">
 
 
-	<insert id="enjoyInsert" parameterType="MemberVO">
-		insert into enjoy
-		(enjoy_name) value
-		(#{enjoy_name})
-	</insert>
-	
+	<insert id="CREATE_MEMBER" parameterType="MemberVO">
+    INSERT INTO member
+    (member_name, member_password, member_username, member_department, member_local, member_start_date, member_LDAP, member_role, member_phone_number, member_team)
+    VALUES
+    (#{member_name}, #{member_password}, #{member_username}, #{member_department}, #{member_local}, #{member_start_date}, #{member_LDAP}, #{member_role}, #{member_phone_number}, #{member_team})
+</insert>
+
 
 </mapper>
 

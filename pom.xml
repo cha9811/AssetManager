@@ -9,7 +9,7 @@
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
-		<java-version>1.6</java-version>
+		<java-version>1.8</java-version>
 		<org.springframework-version>5.0.1.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
@@ -28,11 +28,20 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
+
 		<!-- mybatis 연결하기 -->
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 		<dependency>
@@ -56,6 +65,13 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>5.0.1.RELEASE</version>
 		</dependency>
+		<!-- 트랜잭션 활성화 목적 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<!-- 트랜잭션 활성화 목적 -->
 
 		<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
 		<dependency>
@@ -69,6 +85,110 @@
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>
+		<!-- json 자산데이터 옮기기 목적 -->
+		<!-- Jackson Core -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.13.3</version>
+		</dependency>
+
+		<!-- Jackson Databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.13.3</version>
+		</dependency>
+
+		<!-- Jackson Annotations -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.13.3</version>
+		</dependency>
+		<!-- 웹소켓 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>${org.springframework-version}</version> <!-- 사용 중인 Spring 버전에 맞게 조정하세요 -->
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-messaging</artifactId>
+			<version>${org.springframework-version}</version> <!-- 동일하게 버전 조정 -->
+		</dependency>
+		<!-- 웹소켓 -->
+		<!-- 스프릴 부트용 웹소켓 -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.boot</groupId> -->
+		<!-- <artifactId>spring-boot-starter-websocket</artifactId> -->
+		<!-- </dependency> -->
+		<!-- 스프링 부트용 웹소켓 -->
+<!-- 웹소켓관련 gson(VO) -->
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.8.6</version>
+</dependency>
+		<!-- 트랜잭션용? -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.9.6</version> <!-- 사용하는 버전에 맞춰서 수정하세요 -->
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2</version> <!-- 사용하는 버전에 맞춰서 수정하세요 -->
+		</dependency>
+		<!--스프링시큐리티 web 라이브러리 -->
+		<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-web</artifactId>
+		<version>${org.springframework-version}</version>
+		</dependency>
+
+		<!--스프링시큐리티 core 라이브러리 -->
+		<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-core</artifactId>
+		<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context-support</artifactId>
+		<version>${org.springframework-version}</version>
+		</dependency>
+		<!-- 스프링시큐리티 config 라이브러리 -->
+		<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-config</artifactId>
+		<version>${org.springframework-version}</version>
+		</dependency>
+
+		<!-- JSP에서 스프링 시큐리티 관련 태그lib을 활용하기위한 의존성 주입 -->
+		<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-taglibs</artifactId>
+		<version>${org.springframework-version}</version>
+		</dependency>
+
+		<!-- json 자산데이터 옮기기 목적 -->
+		<!-- 시큐리티관련 -->
+
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.security</groupId> -->
+		<!-- <artifactId>spring-security-taglibs</artifactId> -->
+		<!-- <version>4.2.0.RELEASE</version> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.security</groupId> -->
+		<!-- <artifactId>spring-security-acl</artifactId> -->
+		<!-- <version>4.2.0.RELEASE</version> -->
+		<!-- </dependency> -->
+		<!-- 시큐리티관련 -->
 
 		<!-- Logging -->
 		<dependency>
@@ -166,10 +286,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.5.1</version>
+				<version>3.8.1</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.8</source>
+					<target>1.8</target>
 					<compilerArgument>-Xlint:all</compilerArgument>
 					<showWarnings>true</showWarnings>
 					<showDeprecation>true</showDeprecation>

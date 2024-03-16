@@ -1,40 +1,35 @@
 package com.study.member;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 public class MemberController {
 
 	@Autowired
 	MemberService memberService;
-	
-	@RequestMapping(value="/loginPage")
-	public String loginPage() {
+
+	@RequestMapping("/loginPage")
+	public String moveloginPage() {
 		return "/member/loginPage";
 	}
-	
-	
-	@RequestMapping(value="/signUpPage")
-	public String singUpPage() {
+
+	@RequestMapping(value = "/signUpPage")
+	public String movesignUpPage() {
 		return "/member/signUpPage";
 	}
-	
-	@RequestMapping(value="/signUp")
-	public String singUp() {
-//		memberService.
-		return "s";
+
+	@RequestMapping("/login2")
+	public String login() {
+	System.out.println("로긴!");
+		return "login"; // 로그인 페이지 뷰 이름 반환
+	}
+	@RequestMapping(value = "/signUp")
+	public String signUp(@ModelAttribute("member") MemberVO vo) {
+		System.out.println(vo);
+		memberService.memberSignUp(vo);
+		return "redirect:/loginPage";
 	}
 }

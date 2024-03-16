@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상세페이지</title>
+<title>Insert title here</title>
 </head>
 <body>
-안녕하세용
+404에러
 </body>
 </html>

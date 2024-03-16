@@ -3,30 +3,99 @@
 <mapper namespace="ASSET_MAPPER">
 
 	<select id="GET_ASSET_LIST" resultType="AssetVO">
-		select * from assets where asset_deleted=1
+		select * from assets
+		where asset_deleted=1
 	</select>
 
 	<select id="GET_ASSET_LIST_BY_SOFT_DELETE" resultType="AssetVO">
-		select * from assets where asset_deleted=0
+		select *
+		from assets where asset_deleted=0
 	</select>
-	
-	<select id="GET_ASSET_ONE" parameterType="int" resultType="AssetVO">
+
+	<select id="GET_ASSET_ONE" parameterType="int"
+		resultType="AssetVO">
 		select * from assets
 		where main_id = #{main_id}
 	</select>
 
 	<insert id="CREATE_ASSET_ONE" parameterType="AssetVO">
-		insert into assets
-		(main_title,main_content,main_category,main_reward,main_limit,main_start_time,main_end_time,use_time,member_name)
-		values
-		(#{main_title},#{main_content},#{main_category},#{main_reward},#{main_limit},#{main_start_time},#{main_end_time},#{use_time},#{member_name})
-	</insert>	
-	
+    INSERT INTO assets (
+        asset_category, 
+        asset_major_category, 
+        asset_middle_category, 
+        asset_sub_category, 
+        asset_name, 
+        serial_number, 
+        asset_mac_address, 
+        asset_number, 
+        asset_local, 
+        asset_use_department, 
+        asset_use_member_name, 
+        asset_LDAP, 
+        asset_price, 
+        asset_acquisition_date, 
+        asset_disbursement_date, 
+        asset_return_date, 
+        asset_description, 
+        asset_deleted
+    ) VALUES (
+        #{asset_category}, 
+        #{asset_major_category}, 
+        #{asset_middle_category}, 
+        #{asset_sub_category}, 
+        #{asset_name}, 
+        #{serial_number}, 
+        #{asset_mac_address}, 
+        #{asset_number}, 
+        #{asset_local}, 
+        #{asset_use_department}, 
+        #{asset_use_member_name}, 
+        #{asset_LDAP},
+        #{asset_price}, 
+        #{asset_acquisition_date}, 
+        #{asset_disbursement_date}, 
+        #{asset_return_date}, 
+        #{asset_description}, 
+        '1'
+    )
+</insert>
+
 	<delete id="DELETE_ASSET_ONE" parameterType="int">
 		delete from assets
 		where
 		main_id = #{main_id}
 	</delete>
+
+	<update id="ASSET_INFO_UPDATE" parameterType="AssetVO">
+		UPDATE assets
+		SET
+		asset_category = #{asset_category},
+		asset_major_category =
+		#{asset_major_category},
+		asset_middle_category =
+		#{asset_middle_category},
+		asset_sub_category = #{asset_sub_category},
+		asset_name = #{asset_name},
+		serial_number = #{serial_number},
+		asset_mac_address = #{asset_mac_address},
+		asset_number =
+		#{asset_number},
+		asset_local = #{asset_local},
+		asset_use_department =
+		#{asset_use_department},
+		asset_use_member_name =
+		#{asset_use_member_name},
+		asset_LDAP = #{asset_LDAP},
+		asset_price =
+		#{asset_price},
+		asset_acquisition_date = #{asset_acquisition_date},
+		asset_disbursement_date = #{asset_disbursement_date},
+		asset_return_date = #{asset_return_date},
+		asset_description =
+		#{asset_description},
+		asset_deleted = #{asset_deleted}
+		WHERE asset_id = #{asset_id}
+	</update>
 
 
 </mapper>

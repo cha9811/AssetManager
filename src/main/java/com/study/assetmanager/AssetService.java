@@ -1,6 +1,8 @@
 package com.study.assetmanager;
 
-
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,34 +12,55 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Service
 public class AssetService {
-	
+
 	@Autowired
 	AssetDAOImpl assetDAOImpl;
-	
-	public List<AssetVO> AssetList() throws Exception{ 
+
+	public List<AssetVO> AssetList() throws Exception {
 		List<AssetVO> allAssets = new ArrayList<AssetVO>();
 		allAssets = assetDAOImpl.getAssetList();
 		return allAssets;
 	}
-	
-	public List<AssetVO> DeletedAssetList() throws Exception{ 
+
+	public List<AssetVO> DeletedAssetList() throws Exception {
 		List<AssetVO> allAssets = new ArrayList<AssetVO>();
 		allAssets = assetDAOImpl.getSoftDeletedAssetList();
 		return allAssets;
 	}
-	
-	//1. 전체를 리스트로 가져온다
-	//2. 반복한다???
-	public List<AssetVO> AssetUpdateAll(@ModelAttribute AssetVO assetVO){
-		List<AssetVO> allAssets = new ArrayList<AssetVO>();
-//		allAssets = assetDAOImpl.updateAssetAll(allAssets);
-		return allAssets;
+
+	public void AssetUpdate(AssetVO vo) throws Exception {
+		String acquisition_date = vo.getAsset_acquisition_date();
+		String disbursement_date = vo.getAsset_disbursement_date();
+		String return_date = vo.getAsset_return_date();
+
+		vo.setAsset_acquisition_date(dateCasting(acquisition_date));
+		vo.setAsset_disbursement_date(dateCasting(disbursement_date));
+		vo.setAsset_return_date(dateCasting(return_date));
+		assetDAOImpl.updateAsset(vo);
 	}
-	
-	public AssetVO AssetInsert() throws Exception{ 
-//		List<AssetVO> allAssets = new ArrayList<AssetVO>();
-		allAssets = assetDAOImpl.getAssetList();
-		return allAssets;
+
+	public void AssetInsert(AssetVO vo) throws Exception {
+		assetDAOImpl.createAsset(vo);
+
 	}
-	
+
+	public String dateCasting(String goodday) {
+		try {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+			LocalDate date = LocalDate.parse(goodday, formatter);
+			String dateForDatabase = date.format(DateTimeFormatter.ISO_LOCAL_DATE);
+			return dateForDatabase;
+		} catch (DateTimeParseException e) {
+			return goodday;
+		}
+	}
+
+	public String dateDownCasting(String goodday) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+		LocalDate date = LocalDate.parse(goodday, formatter);
+
+		String dateForDatabase = date.format(DateTimeFormatter.ISO_LOCAL_DATE);
+		return dateForDatabase;
+	}
+
 }
