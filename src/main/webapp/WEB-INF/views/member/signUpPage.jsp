@@ -15,6 +15,8 @@
 		<form action="signUp" method="POST">
 			<fieldset>
 				<legend>회원 정보 입력</legend>
+								    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				
 <label for="member_name">ID</label> 
 <input id="member_name" type="text" name="member_name" value="1" required />
 

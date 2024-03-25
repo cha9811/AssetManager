@@ -13,9 +13,11 @@
 <body>
 	로그인페이지
 	<main>
-		<form action="login">
+		<form action="login" method="post">
 			<fieldset>
 				<legend>회원 정보 입력</legend>
+				    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				
 				<label for="member_name">ID</label>
 				<input id="member_name" name="username" type="text" required />
 				<label for="member_password">비밀번호</label>
@@ -27,6 +29,6 @@
 			</div>
 		</form>
 	</main>
-	<a href="signUpPage">sss</a>
+	<a href="signUpPage">회원가입하기</a>
 </body>
 </html>

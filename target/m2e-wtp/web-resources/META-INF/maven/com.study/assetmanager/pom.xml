@@ -35,6 +35,7 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
@@ -107,16 +108,16 @@
 			<version>2.13.3</version>
 		</dependency>
 		<!-- 웹소켓 -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-websocket</artifactId>
-			<version>${org.springframework-version}</version> <!-- 사용 중인 Spring 버전에 맞게 조정하세요 -->
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-messaging</artifactId>
-			<version>${org.springframework-version}</version> <!-- 동일하게 버전 조정 -->
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-websocket</artifactId> -->
+<!-- 			<version>${org.springframework-version}</version> 사용 중인 Spring 버전에 맞게 조정하세요 -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-messaging</artifactId> -->
+<!-- 			<version>${org.springframework-version}</version> 동일하게 버전 조정 -->
+<!-- 		</dependency> -->
 		<!-- 웹소켓 -->
 		<!-- 스프릴 부트용 웹소켓 -->
 		<!-- <dependency> -->
@@ -124,12 +125,12 @@
 		<!-- <artifactId>spring-boot-starter-websocket</artifactId> -->
 		<!-- </dependency> -->
 		<!-- 스프링 부트용 웹소켓 -->
-<!-- 웹소켓관련 gson(VO) -->
-<dependency>
-    <groupId>com.google.code.gson</groupId>
-    <artifactId>gson</artifactId>
-    <version>2.8.6</version>
-</dependency>
+		<!-- 웹소켓관련 gson(VO) -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.6</version>
+		</dependency>
 		<!-- 트랜잭션용? -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -143,34 +144,34 @@
 		</dependency>
 		<!--스프링시큐리티 web 라이브러리 -->
 		<dependency>
-		<groupId>org.springframework.security</groupId>
-		<artifactId>spring-security-web</artifactId>
-		<version>${org.springframework-version}</version>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${org.springframework-version}</version>
 		</dependency>
 
 		<!--스프링시큐리티 core 라이브러리 -->
 		<dependency>
-		<groupId>org.springframework.security</groupId>
-		<artifactId>spring-security-core</artifactId>
-		<version>${org.springframework-version}</version>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${org.springframework-version}</version>
 		</dependency>
 		<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-context-support</artifactId>
-		<version>${org.springframework-version}</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework-version}</version>
 		</dependency>
 		<!-- 스프링시큐리티 config 라이브러리 -->
 		<dependency>
-		<groupId>org.springframework.security</groupId>
-		<artifactId>spring-security-config</artifactId>
-		<version>${org.springframework-version}</version>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${org.springframework-version}</version>
 		</dependency>
 
 		<!-- JSP에서 스프링 시큐리티 관련 태그lib을 활용하기위한 의존성 주입 -->
 		<dependency>
-		<groupId>org.springframework.security</groupId>
-		<artifactId>spring-security-taglibs</artifactId>
-		<version>${org.springframework-version}</version>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${org.springframework-version}</version>
 		</dependency>
 
 		<!-- json 자산데이터 옮기기 목적 -->

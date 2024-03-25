@@ -21,7 +21,7 @@ public class MemberController {
 		return "/member/signUpPage";
 	}
 
-	@RequestMapping("/login2")
+	@RequestMapping("/login")
 	public String login() {
 	System.out.println("로긴!");
 		return "login"; // 로그인 페이지 뷰 이름 반환
@@ -32,4 +32,9 @@ public class MemberController {
 		memberService.memberSignUp(vo);
 		return "redirect:/loginPage";
 	}
+//	@RequestMapping("/login")
+//	public String login() {
+//	System.out.println("로긴!");
+//		return "login"; // 로그인 페이지 뷰 이름 반환
+//	}
 }

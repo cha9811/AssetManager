@@ -2,7 +2,7 @@ package com.study.chatting;
 
 import com.google.gson.Gson;
 
-public class MessageVO {
+public class ChattingVO {
 	
 	 private String type;
 	    private String message;
@@ -45,9 +45,9 @@ public class MessageVO {
 					+ timestamp + "]";
 		}
 	
-		public static MessageVO converMessage(String payload) {
+		public static ChattingVO converMessage(String payload) {
 	        Gson gson = new Gson();
-	        return gson.fromJson(payload, MessageVO.class);
+	        return gson.fromJson(payload, ChattingVO.class);
 	    }
 	
 	
