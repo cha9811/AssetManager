@@ -34,10 +34,10 @@ public class AssetService {
 		return allAssets;
 	}
 	
-	public AssetVO AssetInsert() throws Exception{ 
-//		List<AssetVO> allAssets = new ArrayList<AssetVO>();
-		allAssets = assetDAOImpl.getAssetList();
-		return allAssets;
-	}
+//	public AssetVO AssetInsert() throws Exception{ 
+////		List<AssetVO> allAssets = new ArrayList<AssetVO>();
+//		allAssets = assetDAOImpl.getAssetList();
+//		return allAssets;
+//	}
 	
 }

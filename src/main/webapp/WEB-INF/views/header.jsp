@@ -33,6 +33,6 @@
         <a href="assetlist">자산보기</a>
         <a href="deletedassetlist">삭제 자산 보기</a>
         <a href="loggout">로그아웃</a>
-    </div>
+        <a href="websocket">소켓</a>    	</div>
 </body>
 </html>

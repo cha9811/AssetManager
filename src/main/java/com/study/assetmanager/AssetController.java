@@ -42,7 +42,7 @@ public class AssetController {
 
 	@RequestMapping("/assetlist")
 	public String assetMainPage(Model model) throws Exception {
-		System.out.println("나실행");
+		System.out.println("나실행1");
 		List<AssetVO> allAssets = assetService.AssetList();
 		model.addAttribute("allAssets", allAssets);
 		return "/asset/assetList"; // 실제 경로는 "WEB-INF/views/asset/assetmain.jsp"
@@ -53,7 +53,7 @@ public class AssetController {
 		public ResponseEntity<?> assetUpdate(@RequestBody List<AssetVO> assets) {
 		for (AssetVO asset : assets) {
 		    if ((Integer)asset.getAsset_id() == null) {
-		    	assetService.
+//		    	assetService.
 		    }
 		    // 추가적인 데이터 검증 로직...
 		}
