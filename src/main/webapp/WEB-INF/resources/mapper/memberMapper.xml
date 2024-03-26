@@ -3,12 +3,84 @@
 <mapper namespace="MEMBER">
 
 
-	<insert id="enjoyInsert" parameterType="MemberVO">
-		insert into enjoy
-		(enjoy_name) value
-		(#{enjoy_name})
-	</insert>
+	<insert id="CREATE_MEMBER" parameterType="MemberVO">
+    INSERT INTO member
+    (member_name, member_password, member_username, member_department, member_local, member_start_date, member_LDAP, member_role, member_phone_number, member_team)
+    VALUES
+    (#{member_name}, #{member_password}, #{member_username}, #{member_department}, #{member_local}, #{member_start_date}, #{member_LDAP}, #{member_role}, #{member_phone_number}, #{member_team})
+</insert>
+
+ <select id="MEMBER_COUNT" resultType="int">
+        select count(*) from member
+    </select>
+
+	<select id="memberIdCheck" parameterType="String"
+		resultType="String">
+		select member_name
+		from member
+		where member_name = #{member_name}
+	</select>
+
+	<!-- 비밀번호체크 -->
+	<select id="memberPwCheck" parameterType="String"
+		resultType="String">
+		select member_password
+		form member
+		where member_password =
+		#{member_password}
+	</select>
+
+	<!-- 로그인 진행 -->
+	<select id="MEMBER_LOGIN" parameterType="String"
+		resultType="memberVO">
+		select * from member where member_name
+		=#{member_name}
+	</select>
+
+	<select id="GET_MEMBER_INFO_BY_NAME" parameterType="String"
+		resultType="memberVO">
+		select * from member where member_name =#{member_name}
+	</select>
 	
+	
+<!-- 비번 체크용 -->
+	<select id="getMemberByPassword" parameterType="String"
+		resultType="memberVO">
+		select * from member where member_password =#{member_password}
+	</select>
+<!-- 	아이디찾기용 -->
+	<select id="getMemberByID" parameterType="int"
+		resultType="memberVO">
+		select * from member where member_id =#{member_id}
+	</select>
+
+<!-- 	아이디찾기용 -->
+	<select id="GET_MEMBER_INFO_BY_EMAIL" parameterType="String"
+		resultType="memberVO">
+		select * from member where member_email =#{member_email}
+	</select>
+	
+
+	<update id="MEMBER_INFO_UPDATE" parameterType="memberVO">
+		update member
+		set
+		member_password = #{member_password},
+		member_nickname = #{member_nickname},
+		member_age = #{member_age},
+		member_phone = #{member_phone},
+		member_job = #{member_job},
+		member_local = #{member_local},
+		member_email = #{member_email},
+		member_money = #{member_money}
+		where member_id = #{member_id}
+	</update>
+
+	<update id="memberPWUpdate" parameterType="memberVO">
+		update member
+		set
+		member_password = #{member_password}
+		where member_id = #{member_id}
+	</update>
 
 </mapper>
 

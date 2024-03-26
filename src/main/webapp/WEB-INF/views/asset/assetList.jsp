@@ -13,11 +13,13 @@
 	href="${pageContext.request.contextPath}/resources/CSS/asset/AssetStyle.css">
 
 <body>
+
 	<section>
 	현재 선택된 셀 : <span id="selectedCell">없음</span><br>
     내용 : <span id="selectedContent">없음</span>
 	</section>
 	<form action="assetUpdate">
+
 		<table class="board-table">
 			<thead>
 				<tr>
@@ -42,6 +44,7 @@
 					<th>주석</th>
 				</tr>
 			</thead>
+
 				
 <div id="loadingMessage" style="display: none;">데이터를 가져오는 중...</div>
 <div id="dataContainer"></div>
@@ -75,10 +78,10 @@
 		
 		</table>
 	</form>
-	<button type="submit">적용하기</button>
-	<button type="button" onclick="addRow()">행 추가</button>
+
 
 </body>
+<%-- <script src="${pageContext.request.contextPath}/resources/JS/JsonTest.js"> --%>
 <script>
 	function addRow() {
 		var tbody = document.getElementById("newTable");
@@ -375,7 +378,6 @@ cell18.innerHTML = `<input class="input-size" name="asset_description" value="" 
             // 필요한 경우 이 값을 사용해 추가 로직을 구현할 수 있습니다.
         }
     }
-    
 </script>
 
 

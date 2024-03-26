@@ -24,7 +24,19 @@ public class AssetVO {
 	private boolean asset_deleted;
 	
 	
-	
+//	
+//	public int getAsset_deleted() {
+//		return asset_deleted;
+//	}
+//
+//
+//
+//	public void setAsset_deleted(int asset_deleted) {
+//		this.asset_deleted = asset_deleted;
+//	}
+
+
+
 	public int getAsset_id() {
 		return asset_id;
 	}

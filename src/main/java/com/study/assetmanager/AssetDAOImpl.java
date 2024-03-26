@@ -33,10 +33,10 @@ public class AssetDAOImpl implements AssetDAO{
 		return AssetSST.update("ASSET_MAPPER.ASSET_INFO_UPDATE", vo);
 	}
 	
-	@Override
-	public int updateAssetAll(List<AssetVO> vo) throws Exception {
-		return AssetSST.update("ASSET_MAPPER.ASSET_INFO_UPDATE", vo);
-	}
+//	@Override
+//	public int updateAssetAll(List<AssetVO> vo) throws Exception {
+//		return AssetSST.update("ASSET_MAPPER.ASSET_INFO_UPDATE", vo);
+//	}
 	
 	@Override
 	public List<AssetVO> getSoftDeletedAssetList() throws Exception {

@@ -31,9 +31,28 @@ public class MemberDAOImpl implements MemberDAO {
 		return memberSST.selectOne("MEMBER.GET_MEMBER_INFO_BY_EMAIL_AND_MEMBER_ID", params);
 	}
 
+	
+
 	@Override
-	public int memberInfoUpdate() {
-		return 0;
+	public Object findByUsername(String username) {
+		return memberSST.selectOne("MEMBER.GET_MEMBER_INFO_BY_NAME", username);
 	}
+
+	@Override
+	public MemberVO memberLogin(String membername) {
+		return memberSST.selectOne("MEMBER.MEMBER_LOGIN", membername);
+	}
+
+	@Override
+	public int memberInfoUpdate(MemberVO memberVO) {
+		return memberSST.update("MEMBER.MEMBER_INFO_UPDATE", memberVO);
+
+	}
+
+	@Override
+	public int memberCount(){
+	return memberSST.selectOne("MEMBER.MEMBER_COUNT");
+	}
+
 
 }

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인</title>
+<title>상세페이지</title>
 </head>
 <body>
 안녕하세용
