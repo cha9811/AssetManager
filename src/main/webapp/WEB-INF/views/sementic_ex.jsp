@@ -15,7 +15,7 @@
     <h1>웹 페이지의 제목</h1>
     <nav>
         <ul>
-            <li><a href="#main">메인</a></li>
+            <a href="#main">메인</a></li>
             <li><a href="#articles">기사</a></li>
             <li><a href="#contact">연락처</a></li>
         </ul>

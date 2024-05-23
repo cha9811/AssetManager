@@ -14,6 +14,8 @@ public class MemberVO {
 	private String member_role;
 	private String member_team;
 	private String member_phone_number;
+	private int member_attendance;
+	private String member_email;
 	
 	public int getMember_id() {
 		return member_id;
@@ -81,15 +83,28 @@ public class MemberVO {
 	public void setMember_phone_number(String member_phone_number) {
 		this.member_phone_number = member_phone_number;
 	}
+	
+	
+	public int getMember_attendance() {
+		return member_attendance;
+	}
+	public void setMember_attendance(int member_attendance) {
+		this.member_attendance = member_attendance;
+	}
 	@Override
 	public String toString() {
 		return "MemberVO [member_id=" + member_id + ", member_name=" + member_name + ", member_username="
 				+ member_username + ", member_password=" + member_password + ", member_department=" + member_department
 				+ ", member_local=" + member_local + ", member_start_date=" + member_start_date + ", member_LDAP="
 				+ member_LDAP + ", member_role=" + member_role + ", member_team=" + member_team
-				+ ", member_phone_number=" + member_phone_number + "]";
+				+ ", member_phone_number=" + member_phone_number + ", member_attendance=" + member_attendance
+				+ ", member_email=" + member_email + "]";
 	}
-	
-	
-	
+	public String getMember_email() {
+		return member_email;
+	}
+	public void setMember_email(String member_email) {
+		this.member_email = member_email;
+	}
+
 }

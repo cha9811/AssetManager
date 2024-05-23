@@ -4,16 +4,28 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
 <configuration>
+<!-- 	보낸 쿼리문 보기 -->
+	<settings>
+    <setting name="logImpl" value="STDOUT_LOGGING"/>
+</settings>
 	<!-- SQL문 정의할 때 VO표현을 간단하게 하고 싶은 경우. 별명을 지어서 사용 -->
 	<typeAliases>
-		<typeAlias type="com.study.assetmanager.AssetVO"
-			alias="assetVO"></typeAlias>
+		<typeAlias type="com.study.assetmanager.AssetVO" alias="assetVO"></typeAlias>
+		<typeAlias type="com.study.assetmanager.AssetDTO" alias="assetDTO"></typeAlias>
 		<typeAlias type="com.study.member.MemberVO" alias="memberVO"></typeAlias>
+		<typeAlias type="com.study.chatting.ChattingMessageVO" alias="chattingMessageVO"></typeAlias>
+		<typeAlias type="com.study.chatting.ChattingRoomVO" alias="chattingRoomVO"></typeAlias>
+		<typeAlias type="com.study.chatting.ChattingRoomDTO" alias="chattingRoomDTO"></typeAlias>
+		<typeAlias type="com.study.report.ReportVO" alias="ReportVO"></typeAlias>
 	</typeAliases>
 
 	<mappers>
 		<!-- SQL문 정의하는 파일들의 목록을 지정. 테이블당 한개 사용 -->
 		<mapper resource="mapper/memberMapper.xml" />
 		<mapper resource="mapper/assetMapper.xml" />
+		<mapper resource="mapper/chattingMessageMapper.xml" />
+		<mapper resource="mapper/chattingRoomMapper.xml" />
+		<mapper resource="mapper/reportMapper.xml" />
 	</mappers>
+
 </configuration>

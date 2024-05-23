@@ -1,0 +1,90 @@
+@charset "EUC-KR";
+
+label {
+  display: block; /* 라벨을 블록 요소로 만들어 줄바꿈 효과를 줍니다. */
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 화면의 높이를 100%로 설정하여 중앙 정렬을 돕습니다. */
+    font-family: Arial, sans-serif; /* 폰트 스타일을 지정합니다. */
+}
+legend{
+	justify-content: centet;
+	    align-items: center;
+	
+}
+form {
+    width: 120%; /* 폼의 너비를 화면 너비의 90%로 조정합니다. */
+    max-width: 600px; /* 폼의 최대 너비를 600px로 설정합니다. */
+    padding: 20px; /* 폼 내부에 여백을 추가합니다. */
+    box-sizing: border-box; /* padding과 border를 너비 계산에 포함시킵니다. */
+}
+input {
+  display: block; /* 입력 필드도 블록 요소로 만들어 줄바꿈 효과를 줍니다. */
+  margin-bottom: 10px; /* 입력 필드 아래에 공간을 추가합니다. */
+}
+fieldset {
+    border-radius: 5px; /* fieldset 모서리를 둥글게 합니다. */
+    padding: 20px; /* 내부 여백을 추가합니다. */
+    border: 1px solid #ccc; /* 테두리 색상을 지정합니다. */
+    margin-bottom: 20px; /* 아래쪽 여백을 추가합니다. */
+    text-align: center; /* fieldset 내의 텍스트(legend 포함)를 가운데 정렬합니다. */
+    
+}
+
+legend {
+    font-size: 1.2em; /* legend 글씨 크기를 키웁니다. */
+    font-weight: bold; /* 글씨를 굵게 합니다. */
+}
+label {
+    display: block; /* 라벨을 블록 요소로 만들어 줄바꿈 효과를 줍니다. */
+    margin-top: 10px; /* 라벨 위쪽 여백을 추가합니다. */
+    font-size: 1.1em; /* 라벨 글씨 크기를 키웁니다. */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="tel"],
+input[type="email"] {
+    width: 100%; /* 입력 필드 너비를 최대로 합니다. */
+    padding: 10px; /* 입력 필드 내부 여백을 추가합니다. */
+    margin-top: 5px; /* 입력 필드 위쪽 여백을 추가합니다. */
+    border-radius: 5px; /* 입력 필드 모서리를 둥글게 합니다. */
+    border: 1px solid #ccc; /* 입력 필드 테두리 색상을 지정합니다. */
+    font-size: 1em; /* 입력 필드 글씨 크기를 지정합니다. */
+        box-sizing: border-box; /* padding과 border를 너비 계산에 포함시킵니다. */
+    
+}
+.button-container {
+    text-align: center; /* 컨테이너 내의 버튼을 가운데로 정렬 */
+}
+button[type="submit"],
+button[type="reset"] {
+    cursor: pointer; /* 버튼 위에 마우스를 올렸을 때 커서 모양을 변경합니다. */
+    padding: 10px 20px; /* 버튼 내부 여백을 추가합니다. */
+    border-radius: 5px; /* 버튼 모서리를 둥글게 합니다. */
+    border: none; /* 버튼 테두리를 제거합니다. */
+    font-size: 1em; /* 버튼 글씨 크기를 지정합니다. */
+    margin: 10px auto; /* 상하 여백을 주고, 좌우 마진을 auto로 설정하여 가운데 정렬합니다. */
+    display: inline-block; /* 버튼을 인라인 블록 요소로 만들어 자체 크기에 맞게 조정합니다. */
+    
+}
+
+button[type="submit"] {
+    background-color: #4CAF50; /* 제출 버튼 배경 색상을 지정합니다. */
+    color: white; /* 제출 버튼 글씨 색상을 지정합니다. */
+}
+
+button[type="reset"] {
+    background-color: #f44336; /* 초기화 버튼 배경 색상을 지정합니다. */
+    color: white; /* 초기화 버튼 글씨 색상을 지정합니다. */
+}
+
+.form-group {
+  display: flex; /* Flexbox 레이아웃을 사용합니다. */
+  flex-direction: column; /* 항목을 세로로 나열합니다. */
+  margin-bottom: 20px; /* 각 폼 그룹 사이에 공간을 추가합니다. */
+}

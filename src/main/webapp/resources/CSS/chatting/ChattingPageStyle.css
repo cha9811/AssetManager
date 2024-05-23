@@ -1,0 +1,316 @@
+@charset "EUC-KR";
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #A8C0D6;
+	padding: 10px;
+}
+
+a {
+	text-decoration: none;
+}
+
+#room-info-space {
+	margin-top: 40px;
+	color: white;
+}
+
+.chat-icon {
+	width: 50px;
+	height: 50px;
+}
+
+.wrap .chat {
+	display: flex;
+	align-items: flex-start;
+	padding: 20px;
+}
+.wrap .chat.ch2 {
+    justify-content: flex-end; /* 오른쪽 정렬 */
+}
+
+.wrap .chat.ch2 .icon {
+    order: 2; /* 아이콘을 오른쪽으로 이동 */
+    margin-right: 0;
+    margin-left: 10px; /* 오른쪽 정렬 시 마진 왼쪽으로 적용 */
+}
+
+.wrap .chat.ch2 .text-content {
+    align-items: flex-end; /* 텍스트 내용 오른쪽 정렬 */
+}
+
+
+.wrap .ch1 .textbox .time {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: -40px;
+    white-space: nowrap;
+}
+
+/* ch2는 내용 앞에 시간을 표시 */
+.wrap .ch2 .textbox .time {
+    position: absolute;
+   
+    margin-left: -50px; /* 내용과의 간격 */
+    order: -1;  /* Flexbox 순서를 이용하여 내용보다 앞에 위치 */
+}
+
+/* ch2 내용의 순서를 시간 다음으로 변경 */
+.wrap .ch2 .textbox span.time + * {
+    order: 1; /* Flex 아이템의 순서 변경 */
+}
+.wrap .chat .icon {
+	position: relative;
+	overflow: hidden;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-color: white;
+}
+
+
+.wrap .ch1 .textbox {
+	position: relative;
+	display: inline-block;
+
+	max-width: 500px;
+	padding: 10px;
+	font-size: 13px;
+	border-radius: 10px;
+	padding-right: 10px; /* 시간을 위한 공간 확보 */
+}
+
+.wrap .ch2 .textbox {
+	position: relative;
+	display: inline-block;
+
+	max-width: 500px;
+	padding: 10px;
+	font-size: 13px;
+	border-radius: 10px;
+	padding-right: 10px;
+	margin-right: 20px;
+	background-color: #F9EB54;
+}
+
+.wrap .chat .text-content {
+    display: flex;
+    flex-direction: column; /* 요소를 수직으로 쌓기 */
+}
+.wrap .chat .chatting-member-name {
+    margin-left: 10px;
+    margin-bottom: 5px; /* 사용자 이름과 텍스트 박스 사이의 간격 */
+    font-weight: bold; /* 이름을 강조 */
+}
+
+.wrap .chat .chatting-member-name {
+    margin-bottom: 5px; /* 사용자 이름과 텍스트 박스 사이의 간격 */
+    font-weight: bold; /* 이름을 강조 */
+}
+
+.wrap .ch1 .textbox {
+	margin-left: 10px;
+	background-color: white;
+}
+
+
+
+.wrap .ch2{
+	margin-right: 0px;
+}
+.button {
+	display: inline-block;
+	background-color: skyblue; /* 스카이 블루 배경색 */
+	color: white;
+	cursor: pointer;	
+	padding: 15px 25px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	margin: 4px 2px;
+	border-radius: 10px;
+	border: 0.5px;
+	margin-right: 30px;
+	width: 10%; /* textSpace의 10% 차지 */
+	margin-left: 10px;
+}
+
+.infobutton {
+	display: inline-block;
+	background-color: skyblue; /* 스카이 블루 배경색 */
+	color: white;
+	cursor: pointer;	
+	padding: 5px 5px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	margin: 4px 2px;
+	border-radius: 10px;
+	border: 0.5px;
+	margin-right: 30px;
+	width: 100px; /* textSpace의 10% 차지 */
+	margin-left: 10px;
+}
+.infobutton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+.button img {
+	vertical-align: middle;
+	filter: invert(100%); /* PNG 이미지 색상 반전 (검정색을 하얀색으로 바꿈) */
+}
+
+#textSpace {
+	width: 100%;
+	height: 10%;
+	display: flex;
+	align-items: center;
+	position: fixed;
+	bottom: 10px; /* 화면 하단에 배치 */
+}
+
+/* Textarea 설정 */
+#messageinput, #searchInput {
+	width: 90%; /* textSpace의 90% 차지 */
+	resize: none; /* 크기 조절 비활성화 */
+	border-radius: 5px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+#chattingbox {
+	background-color: white;
+}
+
+
+
+.time {
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+#chattingSpace {
+	height: 77vh;
+    overflow-y: auto; /* 세로 스크롤 활성화 */
+    overflow-x: hidden; /* 가로 스크롤 비활성화, 필요에 따라 */
+}
+
+#memberContainer {
+	max-height: calc(100% - 120px); /* 예를 들어 상단 요소들의 높이가 합쳐서 120px라 가정 */
+	overflow-y: auto; /* 세로 스크롤바 활성화 */
+	overflow-x: hidden; /* 가로 스크롤바는 비활성화 */
+}
+
+.memberList-Space {
+	display: flex; /* Flexbox를 활성화 */
+	align-items: center; /* 세로 중앙 정렬 */
+	border: 1px solid #ccc; /* 테두리 설정 */
+	padding: 10px; /* 내부 여백 */
+	margin-bottom: 15px; /* 섹션 간 간격 */
+	margin-right: 25px;
+}
+
+.custom-button {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 2px 4px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 5px;
+}
+#memberList-backPage {
+	border-radius: 4px;
+	padding-top: 20px;
+	padding-left: 20px;
+	display: block;
+	position: absolute;
+	margin-top: 50px;
+	top: 50%;
+	left: 50%;
+	height: 50%;
+	width: 40%;
+	transform: translate(-50%, -50%); /* X축과 Y축을 각각 50% 이동하여 정중앙 정렬 */
+	background-color: white;
+	z-index: 10000;
+	margin: auto; /* 자동 마진으로 요소를 중앙에 배치 */
+}
+
+#memberList-backPage img {
+	width: 50px;
+	height: 50px;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1001; /* Sit on top */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px;
+    background-color: white;
+    border: 1px solid #888;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Center text */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.modal-overlay {
+ display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Button styling */
+.btn {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF; /* Blue background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+.status-icon {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.status-0 {
+	background-color: black;
+} /* 예: 퇴근 */
+.status-1 {
+	background-color: green;
+} /* 예: 출근 */
+.status-2 {
+	background-color: blue;
+} /* 예: 연차 */
+.status-3 {
+	background-color: yellow;
+} /* 예: 출장 */
+.status-4 {
+	background-color: red;
+} /* 예: 병가 */

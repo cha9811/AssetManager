@@ -14,10 +14,15 @@ public class AssetDAOImpl implements AssetDAO{
 	SqlSessionTemplate AssetSST;
 	
 	@Override
-	public List<AssetVO> getAssetList() throws Exception {
+	public List<AssetDTO> getAssetList() throws Exception {
 		return AssetSST.selectList("ASSET_MAPPER.GET_ASSET_LIST");
 	}
 
+	@Override
+	public List<AssetDTO> getNewAssetList() throws Exception {
+		return AssetSST.selectList("ASSET_MAPPER.GET_NEW_ASSET_LIST");
+	}
+	
 	@Override
 	public AssetVO getAssetDetail(int i) throws Exception {
 		return AssetSST.selectOne("ASSET_MAPPER.GET_ASSET_ONE_BY_ID", i);
@@ -33,13 +38,9 @@ public class AssetDAOImpl implements AssetDAO{
 		return AssetSST.update("ASSET_MAPPER.ASSET_INFO_UPDATE", vo);
 	}
 	
-//	@Override
-//	public int updateAssetAll(List<AssetVO> vo) throws Exception {
-//		return AssetSST.update("ASSET_MAPPER.ASSET_INFO_UPDATE", vo);
-//	}
 	
 	@Override
-	public List<AssetVO> getSoftDeletedAssetList() throws Exception {
+	public List<AssetDTO> getSoftDeletedAssetList() throws Exception {
 		return AssetSST.selectList("ASSET_MAPPER.GET_ASSET_LIST_BY_SOFT_DELETE");
 	}
 

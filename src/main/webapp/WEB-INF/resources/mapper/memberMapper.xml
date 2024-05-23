@@ -4,21 +4,59 @@
 
 
 	<insert id="CREATE_MEMBER" parameterType="MemberVO">
-    INSERT INTO member
-    (member_name, member_password, member_username, member_department, member_local, member_start_date, member_LDAP, member_role, member_phone_number, member_team)
-    VALUES
-    (#{member_name}, #{member_password}, #{member_username}, #{member_department}, #{member_local}, #{member_start_date}, #{member_LDAP}, #{member_role}, #{member_phone_number}, #{member_team})
-</insert>
+		INSERT INTO member
+		(member_name, member_password, member_username, member_department,
+		member_local,
+		member_start_date, member_LDAP, member_role,
+		member_phone_number,
+		member_team,member_email)
+		VALUES
+		(#{member_name},
+		#{member_password}, #{member_username}, #{member_department},
+		#{member_local}, #{member_start_date}, #{member_LDAP}, #{member_role},
+		#{member_phone_number}, #{member_team}, #{member_email})
+	</insert>
 
- <select id="MEMBER_COUNT" resultType="int">
-        select count(*) from member
-    </select>
+	<select id="MEMBER_COUNT" resultType="int">
+		select count(*) from member
+	</select>
+
+	<select id="GET_MEMBER_LIST" resultType="MemberVO" parameterType="int">
+		select
+		member_id,member_username, member_attendance,
+		member_department,member_phone_number from member
+		where
+		member_id != #{member_id} 
+		
+	</select>
+
+	<select id="GET_MEMBER_INFO_BY_MEMBER_ID" resultType="MemberVO">
+		select
+		member_id,member_username, member_attendance,member_local,member_start_date,member_email,
+		member_department,member_phone_number from member
+		where member_id = #{member_id}
+	</select>
+
+	<select id="GET_MEMBER_ATTENDANCE_COUNT" resultType="map">
+		SELECT
+		member_attendance, COUNT(*) AS count
+		FROM member
+		GROUP BY
+		member_attendance
+	</select>
+
+	<select id="CHECK_USERNAME_EXISTS" resultType="int"
+		parameterType="String">
+		SELECT COUNT(*) FROM member WHERE member_name =
+		#{member_name}
+	</select>
 
 	<select id="memberIdCheck" parameterType="String"
 		resultType="String">
 		select member_name
 		from member
-		where member_name = #{member_name}
+		where member_name =
+		#{member_name}
 	</select>
 
 	<!-- 비밀번호체크 -->
@@ -41,38 +79,49 @@
 		resultType="memberVO">
 		select * from member where member_name =#{member_name}
 	</select>
-	
-	
-<!-- 비번 체크용 -->
+
+
+	<!-- 비번 체크용 -->
 	<select id="getMemberByPassword" parameterType="String"
 		resultType="memberVO">
-		select * from member where member_password =#{member_password}
+		select * from member where member_password
+		=#{member_password}
 	</select>
-<!-- 	아이디찾기용 -->
+	<!-- 아이디찾기용 -->
 	<select id="getMemberByID" parameterType="int"
 		resultType="memberVO">
 		select * from member where member_id =#{member_id}
 	</select>
 
-<!-- 	아이디찾기용 -->
+	<!-- 아이디찾기용 -->
 	<select id="GET_MEMBER_INFO_BY_EMAIL" parameterType="String"
 		resultType="memberVO">
 		select * from member where member_email =#{member_email}
 	</select>
-	
+
+	<update id="RESET_MEMBER_STATUS">
+		UPDATE member SET member_attendance = '0'
+	</update>
 
 	<update id="MEMBER_INFO_UPDATE" parameterType="memberVO">
 		update member
 		set
 		member_password = #{member_password},
-		member_nickname = #{member_nickname},
-		member_age = #{member_age},
-		member_phone = #{member_phone},
-		member_job = #{member_job},
+		member_username =
+		#{member_username},
+		member_department = #{member_department},
 		member_local = #{member_local},
-		member_email = #{member_email},
-		member_money = #{member_money}
-		where member_id = #{member_id}
+		member_start_date =
+		#{member_start_date},
+		member_LDAP = #{member_LDAP},
+		member_role =
+		#{member_role},
+		member_team = #{member_team},
+		member_phone_number =
+		#{member_phone_number},
+		member_attendance = #{member_attendance}
+		where
+		member_id = #{member_id}
 	</update>
 
 	<update id="memberPWUpdate" parameterType="memberVO">

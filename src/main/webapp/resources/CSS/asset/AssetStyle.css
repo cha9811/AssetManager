@@ -1,108 +1,346 @@
 @charset "EUC-KR";
 
 table {
-    width: 100%;
-    border-collapse: collapse; /* 테이블 셀 사이의 간격을 없앱니다 */
+	width: 100%;
+	border-collapse: collapse; /* 테이블 셀 사이의 간격을 없앱니다 */
 }
 
 td, th {
-    border: 1px solid #ddd;
-    padding: 4px; /* 셀 내부의 패딩 조정 */
-    position: relative; /* 포지션 relative 추가 */
-white-space: nowrap; /* 줄 바꿈 없이 텍스트를 한 줄로 유지 */
-    overflow: hidden; /* 오버플로우된 텍스트 숨김 */
-    text-overflow: ellipsis; /* 오버플로우된 텍스트를 말줄임표로 표시 */
+	border: 1px solid #ddd;
+	    position: sticky;
+/* 	top:100px; */
+	padding: 4px; /* 셀 내부의 패딩 조정 */
+	position: relative; /* 포지션 relative 추가 */
+	white-space: nowrap; /* 줄 바꿈 없이 텍스트를 한 줄로 유지 */
+	text-overflow: ellipsis; /* 오버플로우된 텍스트를 말줄임표로 표시 */
+}
+
+.form-Section {
+	margin-top: 115px;
+}
+
+#selectedCell {
+	display: inline-block;
+}
+
+.save-button img {
+	vertical-align: middle; /* 이미지를 텍스트와 중앙 정렬 */
+	/*     margin-right: 8px; 이미지와 텍스트 사이의 간격 */
+	margin-right: 10px; /* 이미지와 텍스트 사이의 간격 */
+	width: 20px; /* 이미지의 너비 */
+	height: auto; /* 이미지의 높이는 자동으로 조절 */
+	filter: invert(100%);
+}
+
+.changed-input {
+	background-color: #FFFF99; /* 변경된 필드의 배경색, 예시로 연한 노랑색을 사용 */
+}
+
+#boxspace {
+	display: inline-block;
+	height: 25px;
+	min-width: 100px;
+	background-color: gray;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+.head-space {
+	top: 0; /* 스크롤 시 상단에서 0px의 위치에 고정 */
+	width: 100%; /* 필요에 따라 전체 너비 */
+	z-index: 1000; /* 다른 콘텐츠 위에 오도록 z-index 설정 */
+	/* 	position: sticky; */
+	position: fixed;
+}
+
+.sticky-section {
+	margin-top: 100px;
+	position: sticky;
+	background: white;
+	z-index: 10;
+	border-bottom: 1px solid #ccc;
+}
+
+#assetForm {
+	margin-top: 50px;
+}
+
+.sticky-section:first-of-type {
+	position: sticky;
+	/* 		top: 350px; */
+	z-index: 1020;
+}
+
+header {
+	position: fixed;
+	width: 100%;
+	z-index: 99;
+	top: -7px;
+}
+
+.detail_img {
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+	transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.detail_img:hover {
+	transform: scale(1.5);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+#modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 배경을 반투명 검정색으로 설정 */
+    z-index: 999; /* 모달 뒤에 나타나도록 설정 */
+    display: none; /* 초기 상태에서는 숨김 */
+}
+#asset-detail-space {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    width: 70%;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.modal-content {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close-button {
+    cursor: pointer;
+    float: right;
+    font-size: 24px;
+}
+#selectedSection {
+	position: fixed;
+	background-color: #f8f9fa;
+	border: 1px solid #d1d3d4;
+	padding: 10px;
+	top: 50px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	display: flex;
+	z-index: 1000;
+	width: 99%;
+	left: 1;
+	margin-bottom: 200px
+}
+
+.info-block {
+	width: 200px;
+	display: flex;
+	align-items: center;
+	padding: 5px 10px;
+	border-right: 1px solid #ccc;
+	display: flex;
+}
+
+.button-space {
+	margin-left: auto; /* 이 부분이 버튼을 오른쪽으로 밀어냅니다 */
+	display: flex;
+	align-items: center;
+	margin-right: 20px;
+}
+
+.info-block:last-child {
+	border-right: none; /* 마지막 요소에는 구분선 제거 */
+}
+
+.label {
+	font-weight: bold;
+	margin-right: 5px;
+	color: #555;
+}
+
+.value {
+	font-weight: normal;
+	color: #1053ff;
+	background-color: #e8f0fe;
+	padding: 3px 6px;
+	border-radius: 4px;
 }
 
 th {
-    background-color: #f2f2f2; /* 헤더 배경색 */
-    color: #333; /* 헤더 글자색 */
-    position: sticky;
-    top: 0;
-    min-height: 30px;
-    z-index: 2; /* 헤더가 항상 위에 오도록 z-index 설정 */
+	background-color: #f2f2f2; /* 헤더 배경색 */
+	color: #333; /* 헤더 글자색 */
+	z-index: 2; /* 헤더가 항상 위에 오도록 z-index 설정 */
 }
 
 .board-table {
-    border-collapse: collapse; /* 셀 사이의 간격 없앰 */
-    table-layout: fixed; /* 열 너비 고정 */
+	border-collapse: collapse; /* 셀 사이의 간격 없앰 */
+	table-layout: fixed; /* 열 너비 고정 */
+	margin-top: 50px;
+}
+
+.detail-board-table {
+	border-collapse: collapse; /* 셀 사이의 간격 없앰 */
+	table-layout: fixed; /* 열 너비 고정 */
+	margin-top: 50px;
+	    width: 100%; /* 테이블 전체 너비를 100%로 설정 */
+	text-align: center;
+}
+
+.th-small {
+    width: 10%; /* 첫 번째 열 너비 */
+}
+
+.th-medium {
+    width: 25%; /* 두 번째와 세 번째 열 너비 */
+}
+
+.th-large {
+    width: 40%; /* 네 번째 열 너비 */
 }
 
 .board-table th, .board-table td {
-    width: 100px; /* 열 너비 고정 */
+	width: 100px; /* 열 너비 고정 */
 }
 
 .board-table tbody {
-    padding-top: 20px; /* 상단 여백 추가 */
+	padding-top: 20px; /* 상단 여백 추가 */
 }
 
 .board-table tr:nth-child(even) {
-    background-color: #f9f9f9; /* 짝수 행 배경색 */
+	background-color: #f9f9f9; /* 짝수 행 배경색 */
 }
 
 .board-table tr:hover {
-    background-color: #eaeaea; /* 마우스 오버시 배경색 */
+	background-color: #eaeaea; /* 마우스 오버시 배경색 */
 }
 
 .input-size {
-    width: 100%; /* 입력 필드 너비를 셀에 맞춤 */
-    height: 100%;
-    box-sizing: border-box; /* 패딩을 포함한 너비로 계산 */
-    border: 0.1px solid #ccc; /* 입력 필드 테두리 스타일 */
-    background-color: #fff; /* 입력 필드 배경색 */
-    padding: 4px; /* 입력 필드 내부 여백 */
-    margin-top: 1px; /* 상단 여백 추가 */
+	width: 100%; /* 입력 필드 너비를 셀에 맞춤 */
+	height: 100%;
+	box-sizing: border-box; /* 패딩을 포함한 너비로 계산 */
+	border: 0.1px solid #ccc; /* 입력 필드 테두리 스타일 */
+	padding: 4px; /* 입력 필드 내부 여백 */
+	margin-top: 1px; /* 상단 여백 추가 */
 }
 
 td:hover::after, th:hover::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 5px; /* 너비 조절 영역의 너비 */
-    height: 100%;
-    cursor: ew-resize; /* 너비 조절 영역을 나타내는 커서 스타일 */
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 5px; /* 너비 조절 영역의 너비 */
+	height: 100%;
+	cursor: ew-resize; /* 너비 조절 영역을 나타내는 커서 스타일 */
 }
 
-/* ======= */
-/* /* table { */ */
-/* /*     table-layout: fixed; 테이블 레이아웃을 고정시켜 셀의 너비를 정확하게 제어할 수 있게 함 */ */
-/* /* } */ */
+.editing {
+	background-color: #f8d7da; /* 붉은색 계열의 배경색 */
+	font-weight: bold;
+	position: relative; /* 하위 요소의 위치 지정 기준 */
+	border: 2px solid black; /* 테두리 두껍게 */
+}
 
-/* th, td { */
-/*     width: 200px; 셀의 너비를 200px로 고정 */
-/*     overflow: hidden; 내용이 넘칠 경우 숨김 */
-/*     text-overflow: ellipsis; 내용이 넘칠 경우 말줄임표로 표시 */
-/*     white-space: nowrap; 셀 내용을 한 줄로 표시, 필요에 따라 제거 가능 */
-/* } */
+.edit-lock {
+	display: none; /* 수정 중 표시를 숨기거나 보여주는 방법을 결정 */
+}
 
-/* .board-table { */
-        
-/*         border-collapse: collapse; 셀 사이의 간격 없앰 */
-/*         table-layout: fixed; 열 너비 고정 */
-/*     } */
-/*     .board-table th, .board-table td { */
-/*     	width: 200px; */
-/*         border: 1px solid #ddd; 테두리 스타일 */
-/*         padding: 8px; 내부 여백 */
-/*     } */
-/*     .board-table th { */
-/*         background-color: #f2f2f2; 헤더 배경색 */
-/*         color: #333; 헤더 글자색 */
-/*     } */
-/*     .board-table tr:nth-child(even) { */
-/*         background-color: #f9f9f9; 짝수 행 배경색 */
-/*     } */
-/*     .board-table tr:hover { */
-/*         background-color: #eaeaea; 마우스 오버시 배경색 */
-/*     } */
-/*     .input-size { */
-/*         width: 100px; 입력 필드 너비를 셀에 맞춤 */
-/*         box-sizing: border-box; 패딩을 포함한 너비로 계산 */
-/*         border: 1px solid #ccc; 입력 필드 테두리 스타일 */
-/*         background-color: #fff; 입력 필드 배경색 */
-/*         padding: 4px; 입력 필드 내부 여백 */
-/*    	  display: block; 블록 레벨 요소로 만들어 너비를 적용 */
-/*     margin: auto; 상하 마진을 제외하고 좌우 마진을 자동으로 설정하여 중앙 정렬 */
-/*     } */
-/* >>>>>>> origin/master */
+.edit-label {
+	display: none;
+	position: absolute;
+	width: auto;
+	background-color: black;
+	color: white;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px;
+	z-index: 1000;
+}
+
+input:hover+.edit-label {
+	visibility: visible;
+	display: block; /* 호버 시 표시 */
+}
+
+.save-button {
+	margin-left: 20px;
+	padding: 10px 20px; /* 버튼의 패딩 설정 */
+	background-color: #4CAF50; /* 녹색 배경 */
+	color: white; /* 텍스트 색상 */
+	border: none; /* 테두리 없음 */
+	border-radius: 5px; /* 둥근 모서리 */
+	font-size: 16px; /* 폰트 크기 */
+	font-weight: bold; /* 폰트 두께 */
+	cursor: pointer; /* 마우스 오버 시 커서 변경 */
+	transition: background-color 0.3s, box-shadow 0.3s;
+	padding: 10px 20px; /* 배경색과 그림자 애니메이션 */
+}
+
+.save-button:hover {
+	background-color: #45a049; /* 호버 시 배경 색상 변경 */
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 효과 */
+}
+
+.save-button:focus {
+	outline: none; /* 포커스 시 아웃라인 제거 */
+	box-shadow: 0 0 0 2px rgba(69, 160, 73, 0.5); /* 포커스 시 그림자 효과 */
+}
+
+/* 출퇴근 관련러튼 */
+.status-light {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	margin-right: 10px; /* 원과 텍스트 사이의 간격 */
+}
+
+.on {
+	background-color: #00FF00; /* 초록 */
+	box-shadow: 0 0 8px #00FF00;
+}
+
+.off {
+	background-color: #A9A9A9; /* 회색 */
+	box-shadow: 0 0 8px #A9A9A9;
+}
+
+.sick {
+	background-color: #FF0000; /* 빨강 */
+	box-shadow: 0 0 8px #FF0000;
+}
+
+.vacation {
+	background-color: #0000FF; /* 파랑 */
+	box-shadow: 0 0 8px #0000FF;
+}
+
+.status-container {
+	display: flex; /* Flexbox를 사용해 아이템들을 한 줄에 나란히 배치 */
+	align-items: center; /* 수직 방향에서 중앙 정렬 */
+	margin-right: 5px;
+	    position: fixed; /* 뷰포트에 고정 */
+	
+	    left: 79vw; /* 뷰포트 너비의 50% 위치에 고정 */
+	
+}
+
+.status-text {
+	font-weight: bold; /* 텍스트를 굵게 */
+}
+
+.custom-button {
+	background-color: black; /* 배경색 검정 */
+	color: white; /* 텍스트 색상 흰색 */
+	font-weight: bold; /* 텍스트 볼드체 */
+	border-radius: 5px; /* 둥근 테두리 */
+	padding: 2px 4px; /* 내부 여백 */
+	font-size: 16px; /* 텍스트 크기 */
+	display: inline-flex; /* 내부 요소를 인라인 플렉스로 정렬 */
+	align-items: center; /* 픽토그램과 텍스트를 수직 중앙 정렬 */
+	justify-content: center; /* 가운데 정렬 */
+	cursor: pointer; /* 마우스 오버 시 커서 변경 */
+	margin: 5px; /* 주변 요소와의 거리 */
+}

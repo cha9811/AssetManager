@@ -3,13 +3,69 @@
 <mapper namespace="CHATTING_MESSAGE">
 
 
-<!-- 	<insert id="enjoyInsert" parameterType="MemberVO"> -->
-<!-- 		insert into enjoy -->
-<!-- 		(enjoy_name) value -->
-<!-- 		(#{enjoy_name}) -->
-<!-- 	</insert> -->
+	<select id="ALL_CHATTING_MESSAGE" parameterType="int"
+		resultType="ChattingMessageVO">
+		select * from
+		chattingmessage
+		where chatting_room_id =
+		#{chatting_room_id}
+	</select>
+
+	<insert id="MAKE_CHATTING_MESSAGE"
+		parameterType="ChattingMessageVO">
+		insert into
+		chattingmessage
+		(chatting_member_id,
+		chatting_room_id,
+		chatting_content,
+		chatting_create_time,
+		chatting_member_name)
+		VALUES (
+		#{chatting_member_id},
+		#{chatting_room_id},
+		#{chatting_content},
+		#{chatting_create_time},
+		#{chatting_member_name}
+		)
+	</insert>
+	
 	
 
+	<!-- <update id="UPDATE_CHATTING_ROOM" parameterType="ChattingRoomVO"> -->
+	<!-- update -->
+	<!-- chattingroom -->
+	<!-- set -->
+	<!-- Room_title =#{Room_title}, -->
+	<!-- Room_content = -->
+	<!-- #{Room_content} -->
+	<!-- where Room_id = #{Room_id} -->
+	<!-- </update> -->
+
+	<update id="SOFT_DELETE_CHATTING_MESSAGE" parameterType="int">
+		update
+		chattingmessage
+		set
+		chatting_hide = 0
+		where chatting_id = #{chatting_id}
+	</update>
+
+<!-- 	<select id="COUNT_UNREAD_MESSAGE" parameterType="String" -->
+<!-- 		resultType="hashMap"> -->
+<!-- 		SELECT COUNT(*) AS unread_count -->
+<!-- 		FROM message_read_status -->
+<!-- 		WHERE user_id = #{memberId} AND room_id = #{roomId} AND is_read = false -->
+<!-- 	</select> -->
+
+	
+
+	<!-- <update id="SOFT_DELETE_ROOLBACK_CHATTING_ROOM" -->
+	<!-- parameterType="String"> -->
+	<!-- update chattingroom -->
+	<!-- set -->
+	<!-- Room_isActive = 1 -->
+	<!-- where Room_id = -->
+	<!-- #{Room_id} -->
+	<!-- </update> -->
 </mapper>
 
 

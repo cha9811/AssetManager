@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="REPORT">
+
+	<select id="GET_REPORT_LIST" resultType="ReportVO">
+		select DISTINCT DATE(report_record_time)
+		from reports
+	</select>
+
+	<select id="GET_REPORT_LIST_BY_DATE" resultType="ReportVO">
+		select *
+		from
+		reports
+		WHERE report_record_time BETWEEN
+		#{startDate} AND #{endDate}
+	</select>
+
+	<select id="GET_REPORT_LIST_BY_TEXT" parameterType="String"
+		resultType="ReportVO">
+		select *
+		from reports
+		WHERE report_content =
+		#{report_content}
+	</select>
+
+	<!-- <select id="GET_REPORT_LIST_BY_ID" parameterType="int" -->
+	<!-- resultType="ReportVO"> -->
+	<!-- select * -->
+	<!-- from reports -->
+	<!-- WHERE report_id = -->
+	<!-- #{report_id} -->
+	<!-- </select> -->
+
+	<select id="GET_REPORT_DETAIL_BY_ID" parameterType="String"
+		resultType="ReportVO">
+		SELECT
+		reports.report_record_time,reports.asset_description,reports.report_title,reports.report_content,reports.serial_number,member.member_name
+		from
+		reports
+		JOIN member ON reports.member_name = member.member_name
+		WHERE
+		serial_number =
+		#{serial_number}
+	</select>
+
+	<select id="GET_REPORT_DETAIL_BY_ASSET_NAME"
+		parameterType="String" resultType="ReportVO">
+		SELECT
+		reports.report_title,reports.report_content,member.member_name
+		from
+		reports
+		JOIN member ON reports.member_name = member.member_name
+		WHERE
+		asset_name =
+		#{asset_name}
+	</select>
+
+	<insert id="INSERT_REPORT">
+		INSERT INTO reports
+		(report_record_time,
+		report_content, report_title, report_level, member_name,serial_number)
+		VALUES
+		(NOW(),
+		#{report_content}, #{report_title},
+		#{report_level}, #{member_name},#{serial_number})
+	</insert>
+</mapper>
+
+
+
+
+
+
+
+
+
+

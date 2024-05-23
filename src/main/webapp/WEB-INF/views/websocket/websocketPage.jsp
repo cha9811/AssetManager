@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+<%@ include file="../header.jsp"%>
+
   <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -9,6 +11,14 @@
   </head>
 <body>
     <div>
+    <section>
+    채팅방 목록
+     <ul>
+        <c:forEach var="roomlist" items="${roomlist}">
+            <a href=/chatting/${roomlist.room_id}><li>${roomlist.room_title}</li></a>
+        </c:forEach>
+    </ul>
+    </section>
 <button type="button" id="connect" onclick="openSocket();">대화방 참여</button>
         <button type="button" id="disconnect" onclick="closeSocket();">대회방 나가기</button>
     	<br/><br/><br/>
@@ -56,7 +66,6 @@
         },
         function(error) { // 연결 실패 콜백
          console.log('연결 안됨: ' + error);
-         // 연결 실패 시 처리 로직
      }
         );
         console.log("연결프로세스종료");

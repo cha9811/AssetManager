@@ -1,23 +1,170 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="CHATTING_ROOM">
+	<!-- //TODO: 다대다 관계 설정하기 SELECT r.* FROM Rooms r JOIN MemberRoom mr ON r.room_id 
+		= mr.room_id WHERE mr.member_id = :memberId -->
 
-	<select id="GET_CHATTING_ROOM" resultType="ChattingRoomVO" parameterType="String" >
-	select * from chattingmessage
-	where {#Room_member} = Room_member;
+	<!-- <select id="GET_CHATTING_ROOM_BY_ID" resultType="ChattingRoomDTO" -->
+	<!-- parameterType="int"> -->
+	<!-- select * from chattingroom -->
+	<!-- where Room_member = -->
+	<!-- #{Room_member} -->
+	<!-- </select> -->
+
+	<select id="GET_CHATTING_ROOM_BY_MEMBER"
+		resultType="ChattingRoomVO" parameterType="int">
+		SELECT
+		cr.room_id,
+		cr.room_title,
+		cr.room_content,
+		cr.room_isActive,
+		urs.last_access
+		FROM
+		chattingroom cr
+		JOIN
+		user_room_sessions urs ON cr.room_id =
+		urs.chatting_room_id
+		WHERE
+		urs.member_id = #{member_id}
 	</select>
-	
-<!-- 	<update id="UPDATE_CHATTING_ROOM" resultType=""> -->
-	
-<!-- 	</update> -->
+
+	<insert id="ADD_MEMBER_TO_CHAT_ROOM" parameterType="map">
+		INSERT INTO
+		chat_room_members (room_id, member_id)
+		VALUES (#{room_id},
+		#{member_id})
+	</insert>
+
+	<select id="GET_CHATTING_ROOM" resultType="ChattingRoomDTO">
+		select * from
+		chattingroom
+	</select>
+
+	<select id="GET_CHATTING_ROOM_INFO_BY_ID" parameterType="int"
+		resultType="ChattingRoomDTO">
+		select m.member_id,room_title, m.member_username, room_id from
+		chattingroom cr
+		join
+		user_room_sessions urs ON cr.room_id =
+		urs.chatting_room_id
+		join
+		member m on m.member_id = urs.member_id
+		where
+		room_id = #{room_id}
+	</select>
+	<!-- 만들어진것 가져오기 -->
+
+	<insert id="CREATE_CHATTING_ROOM" parameterType="ChattingRoomVO"
+		useGeneratedKeys="true" keyProperty="room_id">
+		INSERT INTO
+		chattingroom
+		(room_title, room_content, room_member)
+		VALUES
+		(#{room_title},#{room_content},#{room_member})
+	</insert>
+
+	<insert id="ADD_MEMBER_BY_CHATTING_ROOM"
+		parameterType="java.util.Map">
+		INSERT INTO user_room_sessions (member_id,
+		chatting_room_id,
+		last_access)
+		VALUES
+		(#{memberId}, #{chatting_room_id},
+		now())
+	</insert>
+	<update id="UPDATE_CHATTING_ROOM" parameterType="ChattingRoomVO">
+		update
+		chattingroom
+		set
+		room_title =#{room_title},
+		room_content =
+		#{room_content}
+		where room_id = #{room_id}
+	</update>
+
+	<update id="SOFT_DELETE_CHATTING_ROOM" parameterType="String">
+		update
+		chattingroom
+		set
+		room_isActive = 0
+		where room_id = #{room_id}
+	</update>
+
+	<update id="UPDATE_CHATTING_ROOM_BY_CONTENT"
+		parameterType="ChattingRoomVO">
+		update chattingroom
+		set
+		room_content =#{room_content},
+		room_isActive = #{room_isActive}
+		where room_id = #{room_id}
+	</update>
+
+
+	<update id="SOFT_DELETE_ROOLBACK_CHATTING_ROOM"
+		parameterType="String">
+		update chattingroom
+		set
+		room_isActive = 1
+		where room_id =
+		#{room_id}
+	</update>
+
+	<select id="COUNT_UNREAD_MESSAGE" parameterType="map"
+		resultType="int">
+		SELECT COUNT(*) AS
+		unread_count
+		FROM chattingmessage
+		WHERE
+		chatting_room_id =
+		#{chatting_room_id} AND chatting_create_time > (
+		SELECT last_access
+		FROM user_room_sessions
+		WHERE member_id =
+		#{member_id}
+		AND
+		chatting_room_id = #{chatting_room_id}
+		)
+	</select>
+
+	<update id="UPDATE_LAST_ACCESS_TIME" parameterType="map">
+		UPDATE
+		user_room_sessions
+		SET last_access = NOW()
+		WHERE member_id =
+		#{member_id} AND chatting_room_id = #{chattingRoomId}
+	</update>
+
+	<update id="UPDATE_CHATTING_ROOM_INFO"
+		parameterType="ChattingRoomVO">
+		UPDATE
+		chattingroom
+		set
+		room_title =#{room_title}
+		WHERE
+		chatting_room_id =
+		#{chatting_room_id}
+	</update>
+
+<update id="UPDATE_CHATTING_ROOM_BY_TITLE"
+		parameterType="map">
+		UPDATE
+		chattingroom
+		set
+		room_title =#{room_title}
+		WHERE
+		room_id =
+		#{room_id}
+	</update>
 	
 
-<!-- 	<insert id="enjoyInsert" parameterType="MemberVO"> -->
-<!-- 		insert into enjoy -->
-<!-- 		(enjoy_name) value -->
-<!-- 		(#{enjoy_name}) -->
-<!-- 	</insert> -->
-	
+	<delete id="DELETE_MEMBER_BY_CHATTING_ROOM" parameterType="map">
+		delete from user_room_sessions
+		WHERE chatting_room_id = #{chatting_room_id}
+		AND member_id = #{member_id}
+	</delete>
+
+
 
 </mapper>
 

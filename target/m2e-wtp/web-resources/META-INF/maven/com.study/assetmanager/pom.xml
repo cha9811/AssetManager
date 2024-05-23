@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.study</groupId>
 	<artifactId>assetmanager</artifactId>
@@ -35,14 +35,25 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
 
-
+<!--메일용-->
+<dependency>
+    <groupId>javax.mail</groupId>
+    <artifactId>javax.mail-api</artifactId>
+    <version>1.6.2</version>
+</dependency>
+<dependency>
+    <groupId>com.sun.mail</groupId>
+    <artifactId>javax.mail</artifactId>
+    <version>1.6.2</version>
+</dependency>
+<!--메일용-->
 		<!-- mybatis 연결하기 -->
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 		<dependency>
@@ -108,16 +119,17 @@
 			<version>2.13.3</version>
 		</dependency>
 		<!-- 웹소켓 -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework</groupId> -->
-<!-- 			<artifactId>spring-websocket</artifactId> -->
-<!-- 			<version>${org.springframework-version}</version> 사용 중인 Spring 버전에 맞게 조정하세요 -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework</groupId> -->
-<!-- 			<artifactId>spring-messaging</artifactId> -->
-<!-- 			<version>${org.springframework-version}</version> 동일하게 버전 조정 -->
-<!-- 		</dependency> -->
+		<!-- 		<dependency> -->
+		<!-- 			<groupId>org.springframework</groupId> -->
+		<!-- 			<artifactId>spring-websocket</artifactId> -->
+		<!-- 			<version>${org.springframework-version}</version> 사용 중인 Spring 버전에
+		맞게 조정하세요 -->
+		<!-- 		</dependency> -->
+		<!-- 		<dependency> -->
+		<!-- 			<groupId>org.springframework</groupId> -->
+		<!-- 			<artifactId>spring-messaging</artifactId> -->
+		<!-- 			<version>${org.springframework-version}</version> 동일하게 버전 조정 -->
+		<!-- 		</dependency> -->
 		<!-- 웹소켓 -->
 		<!-- 스프릴 부트용 웹소켓 -->
 		<!-- <dependency> -->
@@ -126,6 +138,8 @@
 		<!-- </dependency> -->
 		<!-- 스프링 부트용 웹소켓 -->
 		<!-- 웹소켓관련 gson(VO) -->
+
+
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
@@ -175,6 +189,24 @@
 		</dependency>
 
 		<!-- json 자산데이터 옮기기 목적 -->
+		<!--		jwt토큰 목적-->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+		<!--		jwt토큰 목적-->
+
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>2.3.1</version>
+		</dependency>
 		<!-- 시큐리티관련 -->
 
 
@@ -244,8 +276,8 @@
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -261,24 +293,26 @@
 		</dependency>
 		<!-- 스프링 웹소켓 의존성 -->
 
-<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-websocket</artifactId>
-    <version>${org.springframework-version}</version> <!-- 사용하는 스프링 버전에 맞게 조정 -->
-</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>${org.springframework-version}</version> <!-- 사용하는 스프링 버전에
+			맞게 조정 -->
+		</dependency>
 
-<!-- 스프링 메시징 의존성 -->
-<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-messaging</artifactId>
-    <version>${org.springframework-version}</version> <!-- 사용하는 스프링 버전에 맞게 조정 -->
-</dependency>
-<!-- Jackson 라이브러리 추가 (메시지 브로커 목적) -->
-<dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-databind</artifactId>
-    <version>2.13.0</version>
-</dependency>
+		<!-- 스프링 메시징 의존성 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-messaging</artifactId>
+			<version>${org.springframework-version}</version> <!-- 사용하는 스프링 버전에
+			맞게 조정 -->
+		</dependency>
+		<!-- Jackson 라이브러리 추가 (메시지 브로커 목적) -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.13.0</version>
+		</dependency>
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -294,10 +328,12 @@
 				<version>2.9</version>
 				<configuration>
 					<additionalProjectnatures>
-						<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+						<projectnature>
+							org.springframework.ide.eclipse.core.springnature</projectnature>
 					</additionalProjectnatures>
 					<additionalBuildcommands>
-						<buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+						<buildcommand>
+							org.springframework.ide.eclipse.core.springbuilder</buildcommand>
 					</additionalBuildcommands>
 					<downloadSources>true</downloadSources>
 					<downloadJavadocs>true</downloadJavadocs>

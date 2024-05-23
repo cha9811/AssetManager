@@ -78,6 +78,8 @@
 			pointcut-ref="txPointcut" />
 	</aop:config>
 	<!-- 출처: https://granya.tistory.com/43 [그라냐's blog:티스토리] -->
+
+
 	<context:component-scan base-package="com.study">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Service" />
@@ -95,5 +97,30 @@
 	<!-- 파일 업로드 설정 -->
 	<!-- <property name="maxUploadSize" value="10485760" /> 10MB, 필요에 따라 조절 -->
 	<!-- </bean> -->
+
+	<!-- username과 password의 value에는 사용할 자신의 네이버 또는 구글의 ID와 비밀번호 -->
+	<bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="cha1478916" />
+		<property name="password" value="fvsj prbx seye admf" />
+		<!-- 보안연결 SSL과 관련된 설정 -->
+		<property name="javaMailProperties">
+			<props>
+				<!-- 구글 -->
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+				<!-- 네이버는 (SSL 필요) -->
+				<!-- <prop key="mail.smtp.auth">true</prop> -->
+				<!-- <prop key="mail.smtp.starttls.enable">true</prop> -->
+				<!-- <prop key="mail.smtps.checkserveridentity">true</prop> -->
+				<!-- <prop key="mail.smtps.ssl.trust">*</prop> -->
+				<!-- <prop key="mail.debug">true</prop> -->
+				<!-- <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop> -->
+			</props>
+		</property>
+	</bean>
 
 </beans>

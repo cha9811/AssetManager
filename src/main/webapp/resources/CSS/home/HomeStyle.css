@@ -1,0 +1,268 @@
+@charset "EUC-KR";
+body {
+    font-family: 'Arial', sans-serif; 
+    font-size:16px;
+}
+
+.box-sectiong {
+    display: flex;
+   	margin-top: 20px;
+   	margin-bottom: 20px;
+}
+
+.box-sectiong p {
+    margin-bottom: 20px; /* <p> 요소들 간의 간격 조절 */
+}
+
+.rounded-box {
+    border: 1px solid #ccc; /* 박스 테두리 */
+    border-radius: 10px; /* 모서리 둥글게 */
+    padding: 10px; /* 내부 여백 */
+    color: white; /* 텍스트 색상을 하얀색으로 설정 */
+    height: 80px;
+    width: 140px;
+    display: flex; /* flexbox를 사용하여 내용물을 정렬합니다. */
+    align-items: center; /* 세로 중앙 정렬 */
+    position: relative;
+    box-shadow: 1px 1px 3px 1px #dadce0;
+      font-weight: bold;
+  
+}
+.rounded-box::before {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+.rounded-box img {
+    margin-right: 10px; /* 이미지와 텍스트 사이의 간격 */
+    width: 50px; /* 이미지의 너비 */
+    height: auto; /* 이미지의 높이는 자동으로 조절 */
+    filter: invert(100%);
+    
+}
+.status-light{
+	width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+
+}
+
+
+@keyframes blink {
+    0% {
+        filter: invert(0%); /* 원래 색상 (검정) */
+    }
+    50% {
+        filter: invert(100%); /* 반전 색상 (흰색) */
+    }
+    100% {
+        filter: invert(0%); /* 원래 색상 (검정) */
+    }
+}
+.rounded-box:hover {
+  top: -5px;
+    left: -5px;
+
+}
+
+.button:hover {
+  background: black;
+}
+
+.bg-A {
+    background-color: #ffd900;
+}
+.bg-B {
+    background-color: #a0ff69;
+}
+.bg-C {
+    background-color: #73ccff;
+}
+.bg-D {
+    background-color: #fcabff;
+}
+.bg-E {
+    background-color: #beadff;
+}
+.bg-F {
+    background-color: #beadff;
+	color:white;
+}
+.shiny-effect {
+    position: relative;
+}
+
+.shiny-effect::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.3) 100%
+    );
+    pointer-events: none;
+}
+
+#graphSection {
+    max-width: 500px; /* 섹션의 최대 너비 설정 */
+    margin: 0 auto; /* 가운데 정렬 */
+}
+.move-container {
+	margin-left: 12px; /* 링크와의 간격 조정 */
+    display: flex;
+    align-items: center;
+}
+.move-container a {
+    text-decoration: none; /* 링크의 밑줄 제거 */
+    color: inherit; /* 부모 요소의 텍스트 색상 상속 */
+}
+
+.status-li	ght {
+ width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px; /* 원과 텍스트 사이의 간격 */
+}
+
+.on {
+  background-color: #00FF00; /* 초록 */
+  box-shadow: 0 0 8px #00FF00;
+}
+
+.off {
+  background-color: #A9A9A9; /* 회색 */
+  box-shadow: 0 0 8px #A9A9A9;
+}
+
+.sick {
+  background-color: #FF0000; /* 빨강 */
+  box-shadow: 0 0 8px #FF0000;
+}
+
+.vacation {
+  background-color: #0000FF; /* 파랑 */
+  box-shadow: 0 0 8px #0000FF;
+}
+
+.status-container {
+    display: flex; /* Flexbox를 사용해 아이템들을 한 줄에 나란히 배치 */
+    align-items: center; /* 수직 방향에서 중앙 정렬 */
+	margin-right: 5px;
+	    margin-left: auto;         /* 왼쪽의 모든 여유 공간을 자동으로 설정하여 오른쪽에 배치 */
+	
+}
+.status-text {
+    font-weight: bold; /* 텍스트를 굵게 */
+}
+.custom-button {
+  background-color: black; /* 배경색 검정 */
+  color: white; /* 텍스트 색상 흰색 */
+  font-weight: bold; /* 텍스트 볼드체 */
+  border-radius: 5px; /* 둥근 테두리 */
+  padding: 2px 4px; /* 내부 여백 */
+  font-size: 16px; /* 텍스트 크기 */
+  display: inline-flex; /* 내부 요소를 인라인 플렉스로 정렬 */
+  align-items: center; /* 픽토그램과 텍스트를 수직 중앙 정렬 */
+  justify-content: center; /* 가운데 정렬 */
+  cursor: pointer; /* 마우스 오버 시 커서 변경 */
+  margin: 5px; /* 주변 요소와의 거리 */
+}
+
+.member-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+/*     margin: 20px; */
+    margin-top:10px;
+    width: 310px; /* 조정 가능 */
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: space-around;
+    border: 1px solid black;
+    
+}
+
+.member-detail {
+    margin-bottom: 10px;
+/*     font-size: 16px; */
+    color: #333;
+}
+
+.member-detail strong {
+    color: #000;
+    font-weight: bold;
+}
+.icon img{
+	flex-shrink: 0; /* 이미지 크기가 flex 항목에 의해 줄어들지 않도록 함 */
+	border: 1px solid black;
+	width: 200px; /* 이미지 크기 */
+	height: 200px; /* 이미지 크기 */
+	border-radius: 50%; /* 원형 이미지 */
+	margin-right: 10px; /* 이미지와 정보 사이의 간격 */
+	margin-bottom: 20px;
+}
+#Member-Info-Space{
+	margin-top:35px;
+	align-content: center;
+	  border: 1px solid blackf; 
+	
+}
+
+.main-container {
+    display: flex;
+    width: 100%; /* 전체 너비 사용 */
+    height: 100vh; /* 뷰포트 높이의 100% 사용 */
+}
+
+#Member-Info-BackPage {
+    width: 25%; /* 전체 너비의 20% 사용 */
+}
+
+.right-container {
+    flex: 1; /* 나머지 공간 차지 */
+    display: flex;
+    flex-direction: column; /* 세로 방향으로 요소 정렬 */
+}
+
+#Calendar-space, #test2 {
+    flex: 1; /* 두 섹션이 같은 공간을 차지하도록 */
+    padding: 20px;
+    margin: 10px;
+        border: 1px solid black; /* 테두리 굵기, 스타일, 색상을 명확히 지정 */
+    height: 1000px;
+
+
+}
+
+.bottom-container {
+    flex: 1; /* 나머지 공간 차지 */
+    display: flex; /* 요소를 가로 방향으로 정렬 */
+}
+#graphBar{
+/* margin-bottom: 10px;	 */
+margin-top: 10px;	
+    margin-bottom: 500px;
+
+}
+
+
+/* .box-sectiong, #graphSection { */
+/*     flex: 1; 같은 공간 차지 */
+/*     background-color: #d8d8d8; 배경색 설정 */
+/*     padding: 20px; */
+/*     margin: 10px; */
+/* } */
+

@@ -1,0 +1,185 @@
+@charset "EUC-KR";
+
+/* CSR이라 초기 html블럭에 디자인 적용시칸 목적 */
+@keyframes fadeIn {	
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.status-light {
+ width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px; /* 원과 텍스트 사이의 간격 */
+}
+
+.on {
+  background-color: #00FF00; /* 초록 */
+  box-shadow: 0 0 8px #00FF00;
+}
+
+.off {
+  background-color: #A9A9A9; /* 회색 */
+  box-shadow: 0 0 8px #A9A9A9;
+}
+
+.sick {
+  background-color: #FF0000; /* 빨강 */
+  box-shadow: 0 0 8px #FF0000;
+}
+
+.vacation {
+  background-color: #0000FF; /* 파랑 */
+  box-shadow: 0 0 8px #0000FF;
+}
+.status-container {
+    display: flex; /* Flexbox를 사용해 아이템들을 한 줄에 나란히 배치 */
+    align-items: center; /* 수직 방향에서 중앙 정렬 */
+	margin-right: 5px;
+	    margin-left: auto;         /* 왼쪽의 모든 여유 공간을 자동으로 설정하여 오른쪽에 배치 */
+	
+}
+.status-text {
+    font-weight: bold; /* 텍스트를 굵게 */
+}
+.report_article {
+    animation: fadeIn 0.5s ease-out;
+}
+.fade-in {
+    animation: fadeIn 1s ease-out;
+}
+
+body {
+	background-color: #fafafa;
+}
+
+a {
+	color: inherit; /* 부모 요소의 텍스트 색상 상속 */
+	text-decoration: none; /* 링크 요소에 적용된 밑줄 스타일을 없앱니다. */
+}
+
+#hisoty_space h3 {
+	display: inline; /* h3 요소를 인라인으로 설정하여 수평으로 배치합니다. */
+	margin-right: 10px; /* 오른쪽 여백을 설정하여 요소 사이의 간격을 조절합니다. */
+}
+
+#hisoty_space {
+	justify-content: center; /* 수평 가운데 정렬 */
+}
+
+#history_space {
+    display: flex;
+    flex-direction: column; /* 항목들을 세로 방향으로 배치합니다. */
+    align-items: center; /* 세로 방향의 중심에 요소들을 배치합니다. */
+    width: 80%;
+    margin: 0 auto; /* 가운데 정렬 목적 */
+    margin-bottom: 30px;
+}
+
+#currentDate, #base_date {
+    font-size: 20px; /* 텍스트 크기 조절 */
+    padding: 10px; /* 내부 여백 추가 */
+    display: inline-block; /* inline-block으로 설정하여 크기 조절이 가능하게 함 */
+}
+#currentDate{
+	margin-top: 20px;
+}
+#base_date {
+    width: 200px; /* 날짜 입력 필드의 너비 조절 */
+}
+
+#date_controls {
+    display: flex;
+    justify-content: space-between; /* 'prev_date_btn'과 'next_date_btn'을 양 끝으로 배치 */
+    width: 100%; /* 컨트롤러가 전체 너비를 차지하도록 설정 */
+}
+
+#hisoty_space input[type="date"] {
+	display: inline-block; /* 입력 요소를 인라인 블록으로 설정하여 수평으로 배치합니다. */
+	margin-right: 10px; /* 오른쪽 여백을 설정하여 요소 사이의 간격을 조절합니다. */
+}
+
+/* 날짜부분 */
+
+.report_content {
+	overflow-wrap: break-word;
+}
+
+
+#main_title {
+    display: flex; /* Flexbox 레이아웃 활성화 */
+    justify-content: center; /* 자식 요소를 수평선상에서 중앙 정렬 */
+    align-items: center; /* 자식 요소를 수직선상에서 중앙 정렬 */
+    width: 100%; /* 전체 너비 사용 */
+}
+#report_backpage {
+	justify-content: center; /* 수평 가운데 정렬 */
+	align-items: center; /* 수직 가운데 정렬 */
+	margin-bottom: 100px;
+	margin-top: 40px;
+}
+
+.report_content, .report_date {
+	line-height: 1.5; /* 텍스트 각 줄의 높이를 1.5배로 설정 */
+}
+
+.report_article+.report_article::before {
+	border-top: 1px solid #cccccc; /* 구분선의 스타일을 여기서 조정합니다 */
+	content: ""; /* 가상 요소에는 content 속성이 필요합니다; 비어 있어도 괜찮습니다 */
+	display: block;
+}
+
+.report_article {
+	width: 80%;
+	margin: 0 auto; /* 가운데 정렬 목적 */
+	margin-bottom: 30px;
+}
+
+.report_date {
+	margin-top: 20px;
+	color: gray;
+}
+
+hr {
+	width: 80%;
+	margin: auto; /* 가운데 정렬 */
+}
+
+.button_space {
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+
+.date_space {
+	font-size: 30px;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+.showButton, .hideButton {
+	color: gray;
+	background-color: white;
+	width: 100%;
+	height: 50px;
+	border: 2px solid gray;
+	border-radius: 10px;
+	font-size: 16px;
+	border-radius: 10px;
+}
+
+.date-arrow {
+	color: gray;
+	background-color: white;
+	width: 100%;
+	width: 60px;
+	height: 50px;
+	border: 2px solid gray;
+	border-radius: 10px;
+	font-size: 16px;
+	border-radius: 10px;
+	align-self: flex-end; /* 하단으로 정렬 */
+}

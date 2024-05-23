@@ -1,0 +1,47 @@
+@charset "EUC-KR";
+@keyframes fadeIn {	
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+.image-container {
+    position: relative; /* 포지셔닝 컨텍스트 설정 */
+    text-align: center; /* 이미지 중앙 정렬 */
+    margin: -8px;
+}
+
+.image-container img {
+    width: 100vw; /* 이미지를 컨테이너에 맞게 조정 */
+    height: 100vh; /* 이미지 비율 유지 */
+    display: block; /* 블록 레벨 요소로 설정 */
+}
+
+.text-overlay {
+    position: absolute; /* 부모인 .image-container 기준으로 절대 위치 */
+    top: 10%; /* 상단에서 50% 위치 */
+    left: 2%; 
+    z-index: 10;
+    color:white;
+    width: 500px;
+}
+
+.custom-button {
+    cursor: pointer;
+    padding: .6rem 1rem;
+    border-radius: .5rem;
+    border: 1px solid black;
+    background-color: #B0DCDE;
+    color: var(--white);
+    font-size: 0.8rem;
+    outline: none;
+}
+
+.custom-button:hover {
+    background-color: teal; /* 호버 시 색상 변경 */
+}

@@ -1,0 +1,385 @@
+@charset "EUC-KR";
+
+@keyframes fadeIn {from { opacity:0;
+	
+}
+
+to {
+	opacity: 1;
+}
+
+}
+.fade-in {
+	animation: fadeIn 1s ease-out;
+}
+/* 점차 보이기 */
+.searchMember, #chatRoomName {
+	width: 90%;
+	height: 40px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	margin-left: 25px;
+}
+
+#selectedMembers .member-info {
+	padding: 10px;
+	margin: 5px;
+	border: 1px solid #ccc;
+	display: inline-block;
+}
+
+.status-light {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	margin-right: 10px; /* 원과 텍스트 사이의 간격 */
+}
+
+.on {
+	background-color: #00FF00; /* 초록 */
+	box-shadow: 0 0 8px #00FF00;
+}
+
+.off {
+	background-color: #A9A9A9; /* 회색 */
+	box-shadow: 0 0 8px #A9A9A9;
+}
+
+.sick {
+	background-color: #FF0000; /* 빨강 */
+	box-shadow: 0 0 8px #FF0000;
+}
+
+.vacation {
+	background-color: #0000FF; /* 파랑 */
+	box-shadow: 0 0 8px #0000FF;
+}
+
+.status-container {
+	display: flex; /* Flexbox를 사용해 아이템들을 한 줄에 나란히 배치 */
+	align-items: center; /* 수직 방향에서 중앙 정렬 */
+	margin-right: 5px;
+	margin-left: auto; /* 왼쪽의 모든 여유 공간을 자동으로 설정하여 오른쪽에 배치 */
+}
+
+.status-text {
+	font-weight: bold; /* 텍스트를 굵게 */
+}
+
+.info {
+	flex-grow: 1; /* 남은 공간을 채움 */
+}
+
+#selectedMembers {
+	display: flex; /* Flexbox를 활성화하여 요소들을 수평으로 나열 */
+	flex-wrap: nowrap; /* 요소들이 줄바꿈하지 않고 한 줄에 나열되도록 설정 */
+	overflow-x: auto; /* 내용이 넘칠 경우 수평 스크롤바를 표시 */
+	align-items: center; /* 요소들을 세로 중앙에 정렬 */
+	padding: 10px; /* 내부 여백 */
+	margin-bottom: 20px; /* 아래쪽 마진 */
+	border: 1px solid black; /* 경계선 설정 */
+	min-height: 120px; /* 최소 높이 설정 */
+	border-radius: 5px;
+	/* width: 90%; */
+}
+
+.time-space {
+	color: gray;
+	font-size: 10px;
+}
+
+.last-message-Space {
+	width: 400px;
+}
+
+.member-detail-space {
+	position: fixed; /* 화면에 고정 */
+	top: 50%; /* 상단에서 20% 떨어진 위치에 배치 */
+	left: 50%; /* 왼쪽에서 50% 위치 */
+	transform: translate(-50%, -50%); /* 중앙 정렬을 위해 변환 사용 */
+	width: 50%; /* 너비 80% */
+	background-color: white; /* 배경색 */
+	padding: 20px; /* 패딩 */
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+	z-index: 1000; /* 다른 요소들 위에 보이도록 z-index 설정 */
+	border-radius: 10px; /* 경계선 둥글게 */
+	display: none; /* 기본적으로 숨김 */
+}
+
+#memberContainer {
+	height: 520px; /* 적절한 높이로 설정 */
+	max-height: calc(100% - 120px); /* 예를 들어 상단 요소들의 높이가 합쳐서 120px라 가정 */
+	overflow-y: auto; /* 세로 스크롤바 활성화 */
+	overflow-x: hidden; /* 가로 스크롤바는 비활성화 */
+}
+
+#newChattingMemberListContainer {
+	height: 260px; /* 적절한 높이로 설정 */
+	overflow-y: auto;
+}
+
+#chatting-Room-Space {
+	margin-top: 30px;
+	height: 320px;
+}
+
+#chattingRoomListSpace {
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	flex: 1; /* 채팅방 리스트가 차지할 비율 */
+	overflow-y: auto; /* 세로 스크롤바 활성화 */
+	overflow-x: hidden; /* 가로 스크롤바는 비활성화 */
+	margin-left: 10px;
+}
+
+#chattingRoomListSpace h3 {
+	margin-bottom: 20px;
+}
+
+#chattingRoomListSpace ul {
+	list-style: none;
+	padding: 0;
+}
+
+.selected-member-display {
+	display: flex;
+	flex-direction: column; /* 수직 정렬을 위해 flex 방향 변경 */
+	align-items: center; /* 중앙 정렬 */
+	/*     margin-bottom: 10px; 각 멤버 사이의 간격 */
+	padding: 5px;
+	/*     border: 1px solid #ccc; 테두리 추가 */
+	width: 50px;
+	height: 105px;
+	margin-right: 10px;
+}
+
+.selected-member-display img {
+	border: 1px solid black;
+	width: 50px; /* 이미지 크기 */
+	height: 50px; /* 이미지 크기 */
+	border-radius: 50%; /* 원형 이미지 */
+	margin-bottom: 5px; /* 이미지와 이름 사이의 간격 */
+}
+
+.selected-member-display span {
+	text-align: center; /* 이름을 중앙 정렬 */
+}
+
+#chattingRoomListSpace li {
+	border: 1px solid black;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px; /* 각 항목 간의 간격 */
+	padding-right: 10px;
+	padding-top: 10px;
+	padding-left: 10px;
+	margin-right: 10px;
+}
+
+#chattingRoomListSpace img {
+	width: 50px; /* 이미지 크기 */
+	height: 50px; /* 이미지 크기 */
+	border-radius: 50%; /* 원형 이미지 */
+	margin-right: 10px; /* 이미지와 정보 사이의 간격 */
+	border: 1px solid black;
+}
+
+#chattingRoomListSpace img.no-rooms-img {
+	width: 200px; /* 원본 이미지 크기 유지 */
+	height: 200px; /* 원본 이미지 크기 유지 */
+	display: block;
+	border-radius: 0; /* 원형이 아님 */
+	margin-right: 0; /* 오른쪽 여백 제거 */
+	border: none; /* 테두리 제거 */
+	text-align: center;
+	margin: auto;
+}
+
+#chattingRoomListSpace .info {
+	display: flex;
+	flex-direction: column;
+}
+
+#content-wrapper {
+	display: flex;
+	justify-content: space-between; /* 섹션 사이에 공간을 둠 */
+/* 	height:  */
+}
+
+#memberList-backPage {
+	flex: 0.5; /* 멤버 리스트가 차지할 비율 */
+	/*     padding: 20px; */
+	margin-right: 10px;
+	background-color: #b2c4df;
+	/* 	overflow-y: auto; 세로 스크롤바 활성화 */
+	overflow-x: hidden; /* 가로 스크롤바는 비활성화 */
+}
+
+#newChattingForm {
+	border: 1px solid black;
+	border-radius: 4px;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	display: block;
+	position: absolute;
+	margin-top: 50px;
+	top: 50%;
+	left: 50%;
+	height: 80vh;
+	width: 40%;
+	transform: translate(-50%, -50%); /* X축과 Y축을 각각 50% 이동하여 정중앙 정렬 */
+	background-color: white;
+	z-index: 100;
+	margin: auto; /* 자동 마진으로 요소를 중앙에 배치 */
+	overflow-y: hidden; /* 가로 스크롤바는 비활성화 */
+	overflow-x: hidden; /* 가로 스크롤바는 비활성화 */
+	z-index: 1001;
+}
+
+.modal-background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1001; /* Sit on top */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px;
+    background-color: white;
+    border: 1px solid #888;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Center text */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.modal-overlay {
+ display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.memberList-Space {
+	display: flex; /* Flexbox를 활성화 */
+	align-items: center; /* 세로 중앙 정렬 */
+	
+	z-index: 1001;
+	border: 1px solid #020721;
+	width: 85%;
+	margin: auto;
+	padding: 10px; /* 내부 여백 */
+	margin-bottom: 15px; /* 섹션 간 간격 */
+	border-radius: 5px;
+	background-color: white;
+}
+
+.newChattingMember-List-Space {
+	display: flex; /* Flexbox를 활성화 */
+	align-items: center; /* 세로 중앙 정렬 */
+	border: 1px solid black; /* 테두리 설정 */
+	padding: 10px; /* 내부 여백 */
+	margin-bottom: 15px; /* 섹션 간 간격 */
+	border-radius: 3px;
+}
+
+.newChattingMember-List-Space img {
+	flex-shrink: 0; /* 이미지 크기가 flex 항목에 의해 줄어들지 않도록 함 */
+	border: 1px solid black;
+	width: 50px; /* 이미지 크기 */
+	height: 50px; /* 이미지 크기 */
+	border-radius: 50%; /* 원형 이미지 */
+	margin-right: 10px; /* 이미지와 정보 사이의 간격 */
+}
+
+.member-info {
+	margin-bottom: 5px; /* 정보 블록 간 간격 */
+}
+
+.member-details {
+	display: flex;
+	flex-direction: column; /* 세로 방향으로 요소를 정렬 */
+	flex-grow: 1; /* 남은 공간을 모두 채움 */
+}
+
+.memberList-Space img {
+	flex-shrink: 0; /* 이미지 크기가 flex 항목에 의해 줄어들지 않도록 함 */
+	border: 1px solid black;
+	width: 50px; /* 이미지 크기 */
+	height: 50px; /* 이미지 크기 */
+	border-radius: 50%; /* 원형 이미지 */
+	margin-right: 10px; /* 이미지와 정보 사이의 간격 */
+}
+
+.unread-messages {
+	/*     margin-left: 200px; 왼쪽에 자동으로 여백을 주어 오른쪽 정렬 */
+	font-weight: bold; /* 텍스트를 볼드체로 */
+	border-radius: 15px;
+	background-color: #FF0000;
+	padding-right: 10px;
+	padding-left: 10px;
+	height: 25px;
+	color: white; /* 텍스트 색상 */
+}
+
+.middle-info {
+	display: flex;
+	justify-content: space-between; /* 좌우에 요소를 배치 */
+	width: 100%; /* 부모 요소의 전체 너비를 사용 */
+}
+
+.status-icon {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	display: inline-block;
+	margin-right: 5px;
+}
+
+a#golink {
+	text-decoration: none; /* 링크 밑줄 제거 */
+	color: inherit; /* 상위 요소에서 상속받은 색상 사용 */
+}
+
+.info span {
+	display: block; /* span을 블록 요소로 만들어 줄바꿈 */
+	margin-bottom: 10px; /* 하단 여백으로 간격 조정 */
+}
+
+.status-0 {
+	background-color: black;
+} /* 예: 퇴근 */
+.status-1 {
+	background-color: green;
+} /* 예: 출근 */
+.status-2 {
+	background-color: blue;
+} /* 예: 연차 */
+.status-3 {
+	background-color: yellow;
+} /* 예: 출장 */
+.status-4 {
+	background-color: red;
+} /* 예: 병가 */
+/* .status-5 { background-color: blue; }  예: 연차 */

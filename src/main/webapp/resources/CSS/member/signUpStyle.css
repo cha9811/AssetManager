@@ -1,90 +1,282 @@
 @charset "EUC-KR";
 
-label {
-  display: block; /* 라벨을 블록 요소로 만들어 줄바꿈 효과를 줍니다. */
-}
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* 화면의 높이를 100%로 설정하여 중앙 정렬을 돕습니다. */
-    font-family: Arial, sans-serif; /* 폰트 스타일을 지정합니다. */
-}
-legend{
-	justify-content: centet;
-	    align-items: center;
+/* label { */
+/* 	display: block; */
+/* } */
+
+/* body { */
+/* 	justify-content: center; */
+/* 	align-items: center; */
+/* 	height: 100vh; */
+/* 	font-family: Arial, sans-serif; */
 	
-}
-form {
-    width: 120%; /* 폼의 너비를 화면 너비의 90%로 조정합니다. */
-    max-width: 600px; /* 폼의 최대 너비를 600px로 설정합니다. */
-    padding: 20px; /* 폼 내부에 여백을 추가합니다. */
-    box-sizing: border-box; /* padding과 border를 너비 계산에 포함시킵니다. */
-}
-input {
-  display: block; /* 입력 필드도 블록 요소로 만들어 줄바꿈 효과를 줍니다. */
-  margin-bottom: 10px; /* 입력 필드 아래에 공간을 추가합니다. */
-}
-fieldset {
-    border-radius: 5px; /* fieldset 모서리를 둥글게 합니다. */
-    padding: 20px; /* 내부 여백을 추가합니다. */
-    border: 1px solid #ccc; /* 테두리 색상을 지정합니다. */
-    margin-bottom: 20px; /* 아래쪽 여백을 추가합니다. */
-    text-align: center; /* fieldset 내의 텍스트(legend 포함)를 가운데 정렬합니다. */
-    
+/* } */
+
+/* legend { */
+/* /* 	justify-content: centet; */ */
+/* /* 	align-items: center; */ */
+/* } */
+
+/* form { */
+/* 	padding: 20px; */
+/* 	box-sizing: border-box; */
+/* 	justify-content: center; 가로 중앙 정렬 */
+/* } */
+
+/* input { */
+/* 	display: block; */
+/* 	margin-bottom: 10px; */
+/* } */
+/* .input-group { */
+/*     display: flex; Flexbox를 사용하여 자식 요소들을 가로로 배치 */
+/*     align-items: center; 입력 필드와 버튼을 세로 중앙 정렬 */
+/* } */
+
+/* .input-group input[type="text"] { */
+/*     flex-grow: 1; 입력 필드가 가능한 많은 공간을 차지하도록 설정 */
+/*     margin-right: 20px; 버튼과의 간격 */
+/* } */
+
+/* .input-group button { */
+/*     width:100px; */
+/*     background-color: #4EA685; */
+/* 	color: white; */
+/* 	cursor: pointer; */
+/* 	padding: 10px; */
+/* 	border-radius: 5px; */
+/* 	border: none; */
+/* 	margin-bottom: 5px; */
+/* 	display: inline-block; */
+/* } */
+/* fieldset { */
+/* 	background-color:white; */
+/* 	border-radius: 5px; */
+/* 	padding: 20px; */
+/* 	border: 1px solid #ccc; */
+/* 	margin-bottom: 20px; */
+/*     margin-left: auto; 왼쪽 마진을 자동으로 설정 */
+/*     margin-right: auto; 왼쪽 마진을 자동으로 설정 */
+/*     width: 50%; */
+/* } */
+
+/* legend { */
+/* 	font-size: 1.2em; */
+/* 	font-weight: bold; */
+/* } */
+
+/* label { */
+/* 	display: block; */
+/* 	font-size: 1.1em; */
+/* } */
+
+/* input[type="text"], input[type="password"], input[type="date"], input[type="tel"], */
+/* 	input[type="email"] { */
+/* 	width: 100%; */
+/* 	padding: 10px; */
+/* 	margin-top: 5px; */
+/* 	border-radius: 5px; */
+/* 	border: 1px solid #ccc; */
+/* 	font-size: 1em; */
+/* 	box-sizing: border-box; */
+/* } */
+
+/* .button-container { */
+/* 	text-align: center; */
+/* } */
+
+/* button[type="submit"], button[type="reset"] { */
+/* 	cursor: pointer; */
+/* 	padding: 10px 20px; */
+/* 	border-radius: 5px; */
+/* 	border: none; */
+/* 	font-size: 1em; */
+/* 	margin: 10px auto; */
+/* 	display: inline-block; */
+/* } */
+
+/* button[type="submit"] { */
+/* 	background-color: #4CAF50; */
+/* 	color: white; */
+/* } */
+
+/* button[type="reset"] { */
+/* 	background-color: #f44336; */
+/* 	color: white; */
+/* } */
+
+/* .form-group { */
+/* 	display: flex; */
+/* 	flex-direction: column; */
+/* 	margin-bottom: 20px; */
+/* } */
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 300vw;
+    transform: translate(35%, 0);
+    background-image: linear-gradient(-45deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    transition: 1s ease-in-out;
+    z-index: 6;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-bottom-right-radius: max(50vw, 50vh);
+    border-top-left-radius: max(50vw, 50vh);
 }
 
-legend {
-    font-size: 1.2em; /* legend 글씨 크기를 키웁니다. */
-    font-weight: bold; /* 글씨를 굵게 합니다. */
-}
-label {
-    display: block; /* 라벨을 블록 요소로 만들어 줄바꿈 효과를 줍니다. */
-    margin-top: 10px; /* 라벨 위쪽 여백을 추가합니다. */
-    font-size: 1.1em; /* 라벨 글씨 크기를 키웁니다. */
+.container.sign-in::before,
+.container.sign-up::before {
+    transform: translate(0, 0);
+    right: 50%; /* Adjust this to change the starting position */
 }
 
-input[type="text"],
-input[type="password"],
-input[type="date"],
-input[type="tel"],
-input[type="email"] {
-    width: 100%; /* 입력 필드 너비를 최대로 합니다. */
-    padding: 10px; /* 입력 필드 내부 여백을 추가합니다. */
-    margin-top: 5px; /* 입력 필드 위쪽 여백을 추가합니다. */
-    border-radius: 5px; /* 입력 필드 모서리를 둥글게 합니다. */
-    border: 1px solid #ccc; /* 입력 필드 테두리 색상을 지정합니다. */
-    font-size: 1em; /* 입력 필드 글씨 크기를 지정합니다. */
-        box-sizing: border-box; /* padding과 border를 너비 계산에 포함시킵니다. */
-    
+.container.sign-in .form.sign-in,
+.container.sign-in .social-list.sign-in,
+.container.sign-in .social-list.sign-in>div,
+.container.sign-up .form.sign-up,
+.container.sign-up .social-list.sign-up,
+.container.sign-up .social-list.sign-up>div {
+    transform: scale(1);
 }
-.button-container {
-    text-align: center; /* 컨테이너 내의 버튼을 가운데로 정렬 */
-}
-button[type="submit"],
-button[type="reset"] {
-    cursor: pointer; /* 버튼 위에 마우스를 올렸을 때 커서 모양을 변경합니다. */
-    padding: 10px 20px; /* 버튼 내부 여백을 추가합니다. */
-    border-radius: 5px; /* 버튼 모서리를 둥글게 합니다. */
-    border: none; /* 버튼 테두리를 제거합니다. */
-    font-size: 1em; /* 버튼 글씨 크기를 지정합니다. */
-    margin: 10px auto; /* 상하 여백을 주고, 좌우 마진을 auto로 설정하여 가운데 정렬합니다. */
-    display: inline-block; /* 버튼을 인라인 블록 요소로 만들어 자체 크기에 맞게 조정합니다. */
-    
+:root {
+    --primary-color: #4EA685;
+    --secondary-color: #57B894;
+    --black: #000000;
+    --white: #ffffff;
+    --gray: #efefef;
+    --gray-2: #757575;
+
+    --facebook-color: #4267B2;
+    --google-color: #DB4437;
+    --twitter-color: #1DA1F2;
+    --insta-color: #E1306C;
 }
 
-button[type="submit"] {
-    background-color: #4CAF50; /* 제출 버튼 배경 색상을 지정합니다. */
-    color: white; /* 제출 버튼 글씨 색상을 지정합니다. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-button[type="reset"] {
-    background-color: #f44336; /* 초기화 버튼 배경 색상을 지정합니다. */
-    color: white; /* 초기화 버튼 글씨 색상을 지정합니다. */
+html, body {
+    height: 100vh;
+    overflow: hidden;
 }
 
-.form-group {
-  display: flex; /* Flexbox 레이아웃을 사용합니다. */
-  flex-direction: column; /* 항목을 세로로 나열합니다. */
-  margin-bottom: 20px; /* 각 폼 그룹 사이에 공간을 추가합니다. */
+.container {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    width: 100vw; /* Ensure the container fills the screen */
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+
+.col {
+    width: 50%;
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    justify-content: center; /* Center content horizontally */
+}
+
+.align-items-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 28rem;
+    transform: scale(1); /* Make sure the form is visible */
+}
+
+.form {
+    padding: 1rem;
+    background-color: var(--white);
+    border-radius: 1.5rem;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: .5s ease-in-out;
+    transition-delay: 1s;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+    margin: 1rem 0;
+}
+input[disabled] {
+    background-color: #e9ecef; /* 회색조 배경색 설정 */
+    color: #6c757d; /* 글자 색을 어둡게 설정 */
+    cursor: not-allowed; /* 커서를 금지 표시로 변경 */
+    background-image: url('../img/icon_lock.png'); /* 잠금 아이콘 추가, 상대 경로 사용 */
+    background-repeat: no-repeat; /* 아이콘 반복 없음 */
+	background-position: center; /* 아이콘을 중앙에 위치 */
+    background-size: 16px 16px; /* 아이콘 크기 조정 */
+    padding-right: 30px; /* 텍스트 입력 부분과 아이콘 사이의 공간 확보 */
+}
+
+/* 활성화된 입력 필드 스타일 */
+input:not([disabled]) {
+    background-color: white; /* 백색 배경 */
+    color: black; /* 검은색 글자 */
+    cursor: text; /* 텍스트 입력 가능한 커서 */
+    background-image: none; /* 배경 이미지 없음 */
+}
+.input-group i {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    color: var(--gray-2);
+}
+.pointer {
+    cursor: pointer;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.425rem  1rem;
+    font-size: 0.5rem;
+    background-color: var(--gray);
+    border-radius: .5rem;
+    border: none;
+    outline: none;
+    border: 0.125rem solid var(--primary-color); /* Always show the border */
+}
+.input-group button {
+    width: 30%; /* 전체 너비의 30% */
+}
+
+.form button {
+    cursor: pointer;
+    width: 100%;
+    padding: .6rem 0;
+    border-radius: .5rem;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-size: 1.2rem;
+    outline: none;
+}
+
+.form p {
+    margin: 1rem 0;
+    font-size: .7rem;
+}
+
+.flex-col {
+    flex-direction: column;
 }

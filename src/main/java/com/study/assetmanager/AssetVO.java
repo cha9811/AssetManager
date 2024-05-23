@@ -1,5 +1,6 @@
 package com.study.assetmanager;
 
+import java.util.Date;
 
 public class AssetVO {
 	
@@ -17,23 +18,11 @@ public class AssetVO {
 	private String asset_use_member_name;
 	private String asset_LDAP;
 	private String asset_price;
-	private String asset_acquisition_date;
-	private String asset_disbursement_date;
-	private String asset_return_date;
+	private Date asset_acquisition_date;
+	private Date asset_disbursement_date;
+	private Date asset_return_date;
 	private String asset_description;
 	private boolean asset_deleted;
-	
-	
-//	
-//	public int getAsset_deleted() {
-//		return asset_deleted;
-//	}
-//
-//
-//
-//	public void setAsset_deleted(int asset_deleted) {
-//		this.asset_deleted = asset_deleted;
-//	}
 
 
 
@@ -205,37 +194,37 @@ public class AssetVO {
 
 
 
-	public String getAsset_acquisition_date() {
+	public Date getAsset_acquisition_date() {
 		return asset_acquisition_date;
 	}
 
 
 
-	public void setAsset_acquisition_date(String asset_acquisition_date) {
+	public void setAsset_acquisition_date(Date asset_acquisition_date) {
 		this.asset_acquisition_date = asset_acquisition_date;
 	}
 
 
 
-	public String getAsset_disbursement_date() {
+	public Date getAsset_disbursement_date() {
 		return asset_disbursement_date;
 	}
 
 
 
-	public void setAsset_disbursement_date(String asset_disbursement_date) {
+	public void setAsset_disbursement_date(Date asset_disbursement_date) {
 		this.asset_disbursement_date = asset_disbursement_date;
 	}
 
 
 
-	public String getAsset_return_date() {
+	public Date getAsset_return_date() {
 		return asset_return_date;
 	}
 
 
 
-	public void setAsset_return_date(String asset_return_date) {
+	public void setAsset_return_date(Date asset_return_date) {
 		this.asset_return_date = asset_return_date;
 	}
 
@@ -278,7 +267,14 @@ public class AssetVO {
 				+ asset_description + ", asset_deleted=" + asset_deleted + "]";
 	}
 	
-	
+	@Override
+	public boolean equals(Object obj) {
+	    if (this == obj) return true;
+	    if (obj == null || getClass() != obj.getClass()) return false;
+	    AssetVO assetVO = (AssetVO) obj;
+	    // asset_id를 비교하는 것 외에, 다른 중요한 속성들도 비교해야 할 수 있습니다.
+	    return asset_id == assetVO.asset_id;
+	}
 	
 	
 }

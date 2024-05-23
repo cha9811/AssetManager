@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans
+<!-- <beans:beans -->
+<beans:beans xmlns:mvc="http://www.springframework.org/schema/mvc"
+
 	xmlns="http://www.springframework.org/schema/mvc"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
@@ -28,18 +30,33 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
-	
-	<context:component-scan base-package="com.study.*" />
-	
-	<!-- 웹소켓 -->
-<beans:bean id="echoHandler" class="com.study.config.EchoHandler" />        
 
-<websocket:handlers>
-    <websocket:mapping handler="echoHandler" path="/echo.do"/>
-    <websocket:handshake-interceptors>
-        <beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
-    </websocket:handshake-interceptors>
-    <websocket:sockjs />
-</websocket:handlers>
-	
+	<context:component-scan
+		base-package="com.study.*" />
+
+	<!-- 웹소켓 -->
+	<beans:bean id="echoHandler"
+		class="com.study.config.EchoHandler" />
+
+	<websocket:handlers>
+		<websocket:mapping handler="echoHandler"
+			path="/echo.do" />
+		<websocket:handshake-interceptors>
+			<beans:bean
+				class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
+		</websocket:handshake-interceptors>
+		<websocket:sockjs />
+	</websocket:handlers>
+
+	<beans:bean id="attendanceInterceptor"
+		class="com.study.config.AttendanceInterceptor" />
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<beans:bean class="com.study.config.AttendanceInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+
 </beans:beans>

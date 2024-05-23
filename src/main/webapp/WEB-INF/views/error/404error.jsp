@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-404에러
+
+<img src="img/404_error_img">
 </body>
 </html>

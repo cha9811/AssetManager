@@ -1,0 +1,12 @@
+@charset "EUC-KR";
+
+#FootInfo-Spcae {
+	background-color: #222426;
+	color: white;
+	height: 100px;
+	align-items: center; /* 세로 축에서 중앙 정렬합니다. */
+	justify-content: center; /* 가로 축에서 중앙 정렬합니다. */
+	margin-top: 180px;
+	display: flex; /* Flexbox 레이아웃을 활성화합니다. */
+	text-align: center; /* 텍스트를 중앙 정렬합니다. */
+}

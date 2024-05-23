@@ -2,63 +2,69 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ASSET_MAPPER">
 
-	<select id="GET_ASSET_LIST" resultType="AssetVO">
+	<select id="GET_ASSET_LIST" resultType="AssetDTO">
 		select * from assets
 		where asset_deleted=1
 	</select>
+	<select id="GET_NEW_ASSET_LIST" resultType="AssetDTO">
+		select * from assets
+		where 1=1 and asset_disbursement_date IS NULL
 
-	<select id="GET_ASSET_LIST_BY_SOFT_DELETE" resultType="AssetVO">
+	</select>
+
+
+	<select id="GET_ASSET_LIST_BY_SOFT_DELETE" resultType="AssetDTO">
 		select *
 		from assets where asset_deleted=0
 	</select>
 
-	<select id="GET_ASSET_ONE" parameterType="int"
+	<select id="GET_ASSET_ONE_BY_ID" parameterType="int"
 		resultType="AssetVO">
 		select * from assets
-		where main_id = #{main_id}
+		where asset_id = #{asset_id}
 	</select>
 
 	<insert id="CREATE_ASSET_ONE" parameterType="AssetVO">
-    INSERT INTO assets (
-        asset_category, 
-        asset_major_category, 
-        asset_middle_category, 
-        asset_sub_category, 
-        asset_name, 
-        serial_number, 
-        asset_mac_address, 
-        asset_number, 
-        asset_local, 
-        asset_use_department, 
-        asset_use_member_name, 
-        asset_LDAP, 
-        asset_price, 
-        asset_acquisition_date, 
-        asset_disbursement_date, 
-        asset_return_date, 
-        asset_description, 
-        asset_deleted
-    ) VALUES (
-        #{asset_category}, 
-        #{asset_major_category}, 
-        #{asset_middle_category}, 
-        #{asset_sub_category}, 
-        #{asset_name}, 
-        #{serial_number}, 
-        #{asset_mac_address}, 
-        #{asset_number}, 
-        #{asset_local}, 
-        #{asset_use_department}, 
-        #{asset_use_member_name}, 
-        #{asset_LDAP},
-        #{asset_price}, 
-        #{asset_acquisition_date}, 
-        #{asset_disbursement_date}, 
-        #{asset_return_date}, 
-        #{asset_description}, 
-        '1'
-    )
-</insert>
+		INSERT INTO assets (
+		asset_category,
+		asset_major_category,
+		asset_middle_category,
+		asset_sub_category,
+		asset_name,
+		serial_number,
+		asset_mac_address,
+		asset_number,
+		asset_local,
+		asset_use_department,
+		asset_use_member_name,
+		asset_LDAP,
+		asset_price,
+		asset_acquisition_date,
+		asset_disbursement_date,
+		asset_return_date,
+		asset_description,
+		asset_deleted
+		) VALUES (
+		#{asset_category},
+		#{asset_major_category},
+		#{asset_middle_category},
+		#{asset_sub_category},
+		#{asset_name},
+		#{serial_number},
+		#{asset_mac_address},
+		#{asset_number},
+		#{asset_local},
+		#{asset_use_department},
+		#{asset_use_member_name},
+		#{asset_LDAP},
+		#{asset_price},
+		#{asset_acquisition_date},
+		#{asset_disbursement_date},
+		#{asset_return_date},
+		#{asset_description},
+		'1'
+		)
+	</insert>
 
 	<delete id="DELETE_ASSET_ONE" parameterType="int">
 		delete from assets
@@ -94,8 +100,16 @@
 		asset_description =
 		#{asset_description},
 		asset_deleted = #{asset_deleted}
-		WHERE asset_id = #{asset_id}
+		WHERE asset_id =
+		#{asset_id}
 	</update>
+
+	<select id="GET_RECENT_ASSET_LIST" parameterType="String"
+		resultType="AssetVO">
+		select * from assets
+		where asset_deleted=1 and
+		asset_return_date >= DATE_SUB(NOW(), INTERVAL 7 DAY)
+	</select>
 
 
 </mapper>

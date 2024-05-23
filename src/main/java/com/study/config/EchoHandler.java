@@ -40,7 +40,7 @@ public class EchoHandler extends TextWebSocketHandler {
         sessions.remove(session);
         logger.info("Socket 끊김: {}", session.getId());
     }
-    
+
     @Override
     public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
         logger.error("WebSocket 에러: {}", session.getId(), exception);
