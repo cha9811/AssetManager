@@ -140,8 +140,6 @@
 </body>
 
 <!-- websocket javascript -->
-<!-- <script -->
-<!-- 	src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script> -->
 <script
 	src="${pageContext.request.contextPath}/resources/JS/sockjs.min.js"></script>
 <script

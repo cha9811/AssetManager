@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	    protected void configure(HttpSecurity http) throws Exception {
 	        http
 	            .authorizeRequests()
-	                .antMatchers("/css/**", "/js/**", "images/**", "/signUpPage","/IDcheck", "/signUp","/sendEmail","/checkNum","/createChatRoom","/addChattingRoomMember","/ExitChattingRoom","/UpdateChattingRoomInfo").permitAll() // 회원가입 관련 경로는 모두 허용
+	                .antMatchers("/css/**", "/js/**", "images/**", "asset/signUpPage","/assetmanager/IDcheck", "/assetmanager/signUp","/assetmanager/sendEmail","/assetmanager/checkNum","/assetmanager/createChatRoom","/assetmanager/addChattingRoomMember","/assetmanager/ExitChattingRoom","/assetmanager/UpdateChattingRoomInfo").permitAll() // 회원가입 관련 경로는 모두 허용
 	                .antMatchers("/assetmanager/sendEmail").permitAll()  // 이 경로를 인증 없이 접근 허용
 	                .antMatchers("/admin/**").hasRole("ADMIN") // ADMIN 역할을 가진 사용자만 접근 가능
 	                .anyRequest().authenticated() // 나머지 요청은 모두 인증 필요

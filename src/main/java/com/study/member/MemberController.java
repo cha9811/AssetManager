@@ -106,9 +106,9 @@ public class MemberController {
 		public ResponseEntity<?> sendEmail(@RequestParam("email") String email, HttpSession session) {
 		MemberVO memberInfo = memberService.getMemberByEmail(email);
 
-		if(memberInfo.getMember_email()==null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("해당하는 이메일이 없습니다.");
-		}
+//		if(memberInfo.getMember_email()==null) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("해당하는 이메일이 없습니다.");
+//		}
 		
 		int checknum = memberService.sendEmail(email);
 		session.setAttribute("authCode", checknum);

@@ -195,20 +195,15 @@ public class ChattingController {
 	@Description("채팅방 정보 업데이트")
 	@RequestMapping("//UpdateChattingRoomInfo")
 	public ResponseEntity<String> updateChattingRoomInfo(@RequestBody Map<String, Object> payload) {
-//		chattingRoomService.UpdateChattingRoom(null, 0);
 		Integer roomId = null;
         String roomTitle = null;
         try {
-            // roomId를 Integer로 변환
             roomId = Integer.valueOf(payload.get("roomId").toString());
-            // roomTitle을 String으로 변환
             roomTitle = payload.get("roomTitle").toString();
         } catch (NumberFormatException | NullPointerException e) {
-            System.out.println("Error parsing payload: " + e.getMessage());
             return ResponseEntity.badRequest().body("Invalid roomId or roomTitle");
         }
         chattingRoomService.UpdateChattingRoom(roomTitle,roomId);
-
         return ResponseEntity.ok("s");
 	}
 
