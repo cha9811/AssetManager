@@ -154,7 +154,11 @@
 	src="${pageContext.request.contextPath}/resources/JS/sockjs.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<!-- 		 https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js -->
 
+
+
+	
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -179,7 +183,6 @@
 	// 소켓 연결 시작
 	function openSocket(roomId) {
 		var roomId = extractRoomIdFromUrl(); // roomId를 추출
-		// 		var socket = new SockJS('/assetmanager/stomp-endpoint?auth_token=' + encodeURIComponent(token));
 		var socket = new SockJS('/assetmanager/stomp-endpoint'); // 고정된 엔드포인트 사용
 
 		var token = localStorage.getItem('auth_token'); // JWT 토큰 가져오기
