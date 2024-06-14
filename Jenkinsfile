@@ -21,6 +21,17 @@ pipeline {
                 }
             }
         }
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    // Docker 이미지를 로컬 레지스트리에 푸시
+                    docker.withRegistry('', '') {
+                        dockerImage.push("${env.BUILD_ID}")
+                        dockerImage.push("latest")
+                    }
+                }
+            }
+        }
         stage('Deploy') {
             steps {
                 script {
@@ -30,7 +41,8 @@ pipeline {
                         ssh ubuntu@ip-172-31-32-200 << EOF
                         docker stop assetmanager || true
                         docker rm assetmanager || true
-                        docker run -d --name assetmanager -p 8081:8080 assetmanager:${env.BUILD_ID}
+                        docker pull assetmanager:latest
+                        docker run -d --name assetmanager -p 8081:8080 assetmanager:latest
                         EOF
                         """
                     }
