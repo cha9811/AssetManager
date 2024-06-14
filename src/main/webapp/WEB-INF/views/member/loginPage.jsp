@@ -62,7 +62,11 @@
 			<!-- SIGN IN CONTENT -->
 			<div class="col align-items-center flex-col">
 				<div class="text sign-in">
+<<<<<<< HEAD
 					<h2>3방문을 환영합니다</h2>
+=======
+					<h2>젠킨스 목적 방문을 환영합니다</h2>
+>>>>>>> origin/master
 
 				</div>
 				<div class="img sign-in"></div>
