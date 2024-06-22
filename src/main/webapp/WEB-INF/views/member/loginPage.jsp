@@ -62,7 +62,7 @@
 			<!-- SIGN IN CONTENT -->
 			<div class="col align-items-center flex-col">
 				<div class="text sign-in">
-					<h2>햄 방문을 환영합니다</h2>
+					<h2>방문을 환영합니다</h2>
 				</div>
 				<div class="img sign-in"></div>
 			</div>
@@ -71,7 +71,7 @@
 			<div class="col align-items-center flex-col">
 				<div class="img sign-up"></div>
 				<div class="text sign-up">
-					<h2>Join with us</h2>
+					<h2>Join Us</h2>
 
 				</div>
 			</div>
