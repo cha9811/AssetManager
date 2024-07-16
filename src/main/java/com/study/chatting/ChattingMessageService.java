@@ -38,33 +38,6 @@ public class ChattingMessageService {
 		return messages;		
 	}
 	
-	
-	
-	
-//	public void cahttingRoomUpdate(String title, String content) {
-//		ChattingRoomVO roomvo = new ChattingRoomVO();
-//		roomvo.setRoom_title(title);
-//		roomvo.setRoom_content(content);
-//		
-//	}
-	
-//	public void cahttingRoomupDelete(int id) {
-//		chattingRoomDAOImpl.chattingRoomDelete(id);
-//	}
-//	
-//	public void cahttingRoomupDeleteRooback(int id) {
-//		chattingRoomDAOImpl.chattingRoomDeleteRollBack(id);
-//	}
-//	
-//	//TODO : mapper포함 수정하기, 다대다 관계로 설정하기
-//	public void cahttingRoomupList(int id) {
-//		chattingRoomDAOImpl.chattingRoomAll();
-//	}
-//
-//	public List<ChattingRoomVO> cahttingRoomupList2() {
-//		List<ChattingRoomVO> roomlist = chattingRoomDAOImpl.chattingRoomAll();
-//		return roomlist;
-//	}
 	 public Date parseStringToDate(String dateString) {
 	        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	        try {

@@ -11,6 +11,7 @@ import org.springframework.messaging.handler.invocation.HandlerMethodArgumentRes
 import org.springframework.messaging.handler.invocation.HandlerMethodReturnValueHandler;
 import org.springframework.messaging.simp.config.ChannelRegistration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
@@ -26,7 +27,16 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	@Autowired
 	private WebSocketSecurityConfig webSocketSecurityConfig;
 
+	@Autowired
+    private ThreadPoolTaskExecutor clientInboundChannelExecutor;
 
+    @Autowired
+    private ThreadPoolTaskExecutor clientOutboundChannelExecutor;
+
+
+
+	
+	 
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry registry) {
 //		registry.enableSimpleBroker("/topic/"); // 클라이언트가 구독할 수 있는 주소의 prefix
@@ -41,29 +51,11 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         registry.addEndpoint("/stomp-endpoint").withSockJS();
         registry.addEndpoint("/asset_status").withSockJS();
         registry.addEndpoint("/chatting-home-endpoint").withSockJS();
-//        registry.addEndpoint("/ws").setAllowedOrigins("*").withSockJS();
-
-//		registry.addEndpoint("/stomp-endpoint")
-//				.addInterceptors(authHandshakeInterceptor)
-//				.setAllowedOrigins("*")
-//				.withSockJS();
-//        registry.addEndpoint("/greeting").addInterceptors(new HttpHandshakeInterceptor()).withSockJS();
 
 	}
 
 	@Override
 	public void configureWebSocketTransport(WebSocketTransportRegistration registry) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void configureClientInboundChannel(ChannelRegistration registration) {
-		registration.interceptors(webSocketSecurityConfig);
-	}
-
-	@Override
-	public void configureClientOutboundChannel(ChannelRegistration registration) {
 		// TODO Auto-generated method stub
 
 	}
@@ -91,4 +83,14 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 		return false; // 기본 컨버터를 추가하지 않음
 	}
 
+	@Override
+	public void configureClientInboundChannel(ChannelRegistration registration) {
+        registration.taskExecutor(clientInboundChannelExecutor);  // 스레드풀 설정 추가
+	}
+
+	@Override
+	public void configureClientOutboundChannel(ChannelRegistration registration) {
+        registration.taskExecutor(clientOutboundChannelExecutor);  // 스레드풀 설정 추가
+	}
+	
 }

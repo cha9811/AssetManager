@@ -42,15 +42,7 @@ public class AssetController {
 		return "asset/assetmain";
 	}
 
-	@RequestMapping(value = "/assetmanager/", method = RequestMethod.GET)
-	public String home2(Locale locale, Model model) {
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		String formattedDate = dateFormat.format(date);
-		model.addAttribute("serverTime", formattedDate);
-		return "asset/assetmain";
-	}
-
+	
 	@RequestMapping("/assetlist")
     public String assetMainPage(Model model) throws Exception {
 		List<AssetDTO> allAssets = assetService.AssetList();

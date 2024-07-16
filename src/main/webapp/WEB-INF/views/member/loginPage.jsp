@@ -67,15 +67,6 @@
 				<div class="img sign-in"></div>
 			</div>
 			<!-- END SIGN IN CONTENT -->
-			<!-- SIGN UP CONTENT -->
-			<div class="col align-items-center flex-col">
-				<div class="img sign-up"></div>
-				<div class="text sign-up">
-					<h2>Join Us</h2>
-
-				</div>
-			</div>
-			<!-- END SIGN UP CONTENT -->
 		</div>
 		<!-- END CONTENT SECTION -->
 		<div id="forgot-space" style="display: none;">
@@ -121,30 +112,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- 	<main> -->
-	<!-- 		<form id="login" action="login" method="post"> -->
-	<!-- 			<fieldset> -->
-	<!-- 				<legend>회원 정보 입력</legend> -->
-	<%-- 				<input type="hidden" name="${_csrf.parameterName}" --%>
-	<%-- 					value="${_csrf.token}" /> <label for="member_name">ID</label> <input --%>
-	<!-- 					id="member_name" name="username" type="text" required value="test" /> -->
-	<!-- 				<label for="member_password">비밀번호</label> <input -->
-	<!-- 					id="member_password" name="password" type="password" required -->
-	<!-- 					value="1234" /> -->
-	<!-- 			</fieldset> -->
-	<!-- 			<div class="button-container"> -->
-	<!-- 				<button type="submit">제출</button> -->
-	<!-- 				<button type="reset">초기화</button> -->
-	<!-- 			</div> -->
-	<!-- 		</form> -->
-	<!-- 		<section id="account_options"> -->
-	<!-- 			<button> -->
-	<!-- 				<a href="signUpPage">회원가입하기</a> -->
-	<!-- 			</button> -->
-	<!-- 			<button onclick="find_ID">ID찾기</button> -->
-	<!-- 			<button onclick="find_PW">PW찾기</button> -->
-	<!-- 		</section> -->
-	<!-- 	</main> -->
 </body>
 
 <script

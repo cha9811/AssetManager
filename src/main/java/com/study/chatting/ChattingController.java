@@ -73,8 +73,6 @@ public class ChattingController {
 			throw new IllegalArgumentException("Invalid roomId or memberId");
 		}
 
-		System.out.println("roomId: " + roomId);
-		System.out.println("memberId: " + memberId);
 
 		chattingRoomService.exitChattingRoom(memberId, roomId);
 		return ResponseEntity.ok("/chattingHomePage");
@@ -147,7 +145,6 @@ public class ChattingController {
 
 	@Description("채팅방 메세지 전송")
 	@MessageMapping("/rooms/{roomId}/sendMessage") // 클라이언트에서 보낸 메시지를 받을 경로
-//	@SendTo("/topic/rooms/{roomId}") // 메시지를 다시 발행할 경로 디폴트
 	public ChattingMessageVO sendMessage(@DestinationVariable String roomId, ChattingMessageVO message,
 			Principal principal) {
 		int userId = 500;

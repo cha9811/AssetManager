@@ -27,7 +27,6 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
 		
 		String token = generateToken.generateTokens(auth); // 가정: generateTokens는 토큰 생성 메서드
-		 // JSON 형태로 클라이언트에 토큰 반환
         response.setContentType("application/json;charset=UTF-8");
         response.getWriter().print("{\"auth_token\": \"" + token + "\"}");
         response.getWriter().flush();

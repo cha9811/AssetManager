@@ -86,7 +86,9 @@ public class ReportController {
 	
 		    response.put("reports", reports);
 		    response.put("dateString", dateString);
-
+		
+		    System.out.println("햄버거 : "+reportList);
+			
 		System.out.println("reportList : "+reportList);
 		return ResponseEntity.ok(response);
 	}	

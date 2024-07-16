@@ -60,10 +60,9 @@ public class ChattingRoomDAOImpl implements ChattingRoomDAO {
 		Map<String, Object> params = new HashMap<>();
 	    params.put("room_title", room_title); // 키를 "room_title"로 설정
 		params.put("room_id", room_id); // 키를 "room_id"로 설정
-		System.out.println("제목은 : "+room_title+", 번호는"+ room_id);
-		System.out.println(params);
 		return chattingroomSST.update("CHATTING_ROOM.UPDATE_CHATTING_ROOM_BY_TITLE", params);
 	}
+	
 	@Override
 	public int countUnreadMessages(int member_id, int chatting_room_id) {
 		Map<String, Object> params = new HashMap<>();
@@ -105,10 +104,5 @@ public class ChattingRoomDAOImpl implements ChattingRoomDAO {
 		
 	}
 
-//	@Override
-//	public int chattingRoomUpdate(int id) {
-//		// TODO Auto-generated method stub
-//		return 0;
-//	}
 
 }
