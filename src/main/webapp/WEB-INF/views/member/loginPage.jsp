@@ -40,7 +40,7 @@
 									placeholder="Password" id="member_password" name="password"
 									required value="1234">
 							</div>
-							<button type="submit">로그인하기</button>
+							<button type="submit">로그인</button>
 							<!--                         </fieldset> -->
 						</form>
 						<p>
@@ -180,35 +180,6 @@ toggle = () => {
 setTimeout(() => {
   container.classList.add('sign-in')
 }, 200)
-
-function emailCheckByID() {
-		var useremail = document.getElementById('recoverEmail').value; // 입력된 사용자 이름 가져오기
-		var checknum = document.getElementById('recoverEmailCode'); // 오타 수정: 'documenet' -> 'document'
-		var checkemail = document.getElementById('validatedEmailValueByID'); // 오타 수정: 'documenet' -> 'document'
-		console.log(useremail);
-		$.ajax({
-			url : '/assetmanager/sendEmail',
-			type : 'POST',
-			data : {
-				email : useremail,
-				_csrf : $('input[name="_csrf"]').val()
-			// CSRF 토큰을 추가
-
-			},
-			success : function(response) {
-				alert('인증번호가 발송되었습니다.');
-				console.log(response);
-				checknum.disabled = false; // 인증번호 입력 필드 활성화
-				checkemail.value = useremail; // 여기를 수정하여 DOM 요소의 value 속성을
-
-			},
-			error : function(xhr, status, error) {
-				alert('유효한 이메일이 아닙니다');
-			}
-
-		});
-
-	}
 	
 document.getElementById('login').addEventListener('submit', function(event) {
     event.preventDefault(); // 폼의 기본 제출을 방지
@@ -249,6 +220,35 @@ document.getElementById('login').addEventListener('submit', function(event) {
         // 에러 처리 로직
     });
 });
+function emailCheckByID() {
+		var useremail = document.getElementById('recoverEmail').value; // 입력된 사용자 이름 가져오기
+		var checknum = document.getElementById('recoverEmailCode'); // 오타 수정: 'documenet' -> 'document'
+		var checkemail = document.getElementById('validatedEmailValueByID'); // 오타 수정: 'documenet' -> 'document'
+		console.log(useremail);
+		$.ajax({
+			url : '/assetmanager/sendEmail',
+			type : 'POST',
+			data : {
+				email : useremail,
+				_csrf : $('input[name="_csrf"]').val()
+			// CSRF 토큰을 추가
+
+			},
+			success : function(response) {
+				alert('인증번호가 발송되었습니다.');
+				console.log(response);
+				checknum.disabled = false; // 인증번호 입력 필드 활성화
+				checkemail.value = useremail; // 여기를 수정하여 DOM 요소의 value 속성을
+
+			},
+			error : function(xhr, status, error) {
+				alert('유효한 이메일이 아닙니다');
+			}
+
+		});
+
+	}
+
 function formatEmailFindID() {
     var input = document.getElementById('recoverEmail');
     var email = input.value;
