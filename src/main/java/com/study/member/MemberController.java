@@ -141,25 +141,25 @@ public class MemberController {
 //	}
 
 //	// PW인증받기
-	@PostMapping("/sendEmailPW")
-	public ResponseEntity<?> sendPWEmail(@RequestParam("email") String email,
-			@RequestParam("member_name") String member_name, HttpSession session) {
-		System.out.println(email);
-		MemberVO vo = memberDAO.memberInfoByEmail(email);
-		if (vo != null) {
-			// 세션에 인증용 번호 저장
-			if (!vo.getMember_name().equals(member_name)) {
-				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-			}
-			email = email + "@naver.com";
-			int checknum = memberService.sendIDEmail(email);
-			session.setAttribute("authCode", checknum);
-			System.out.println("저장된 authCode: " + session.getAttribute("authCode"));
-			return ResponseEntity.ok(checknum);
-		} else {
-			return null;
-		}
-	}
+//	@PostMapping("/sendEmailPW")
+//	public ResponseEntity<?> sendPWEmail(@RequestParam("email") String email,
+//			@RequestParam("member_name") String member_name, HttpSession session) {
+//		System.out.println(email);
+//		MemberVO vo = memberDAO.memberInfoByEmail(email);
+//		if (vo != null) {
+//			// 세션에 인증용 번호 저장
+//			if (!vo.getMember_name().equals(member_name)) {
+//				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+//			}
+//			email = email + "@naver.com";
+//			int checknum = memberService.sendIDEmail(email);
+//			session.setAttribute("authCode", checknum);
+//			System.out.println("저장된 authCode: " + session.getAttribute("authCode"));
+//			return ResponseEntity.ok(checknum);
+//		} else {
+//			return null;
+//		}
+//	}
 
 	// PW인증번호비교
 //	@PostMapping("/compairPWNumber")
